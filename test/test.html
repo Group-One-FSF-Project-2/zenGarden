@@ -1,20 +1,36 @@
 <style>
 
-    rect { transition: fill 1s; }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+    }
 
-    svg:hover rect {
-        animation: spin infinite linear 2s;
+    .svg-container {
+        position: relative;
+        width: 20em;
+        height: 20em;
+    }
+
+    rect, circle {     
+        transition: fill 1s; 
         transform-origin: center;
         transform-box: fill-box;
     }
 
-    svg:hover rect[class="02"] { animation: spin infinite linear 1s }
+    svg:hover .shape {
+            animation: spin infinite linear 2s;
+        }
 
-    svg:hover circle {
-        animation: pulse infinite 1s;
-        transform-origin: center;
-        transform-box: fill-box;
+    svg:hover .shape._02 {
+        animation: spin infinite linear 1s;
     }
+
+    svg:hover .shape._03 {
+        animation: pulse infinite 1s }
 
     @keyframes spin {
         0%  { transform: rotate(0deg)  }
@@ -32,19 +48,26 @@
 <body>
     <h1>CLICK IT FOR COLOR</h1>
 
-    <svg width="50em" height="50em">
-        <rect class="01" x="5em" y="5em" width="20em" height="20em"/>
-        <rect class="02" x="7.5em" y="7.5em" width="15em" height="15em"/>
-        <circle cx="15em" cy="15em" r="5em"/>
-    </svg>
+    <div class="svg-container">
+   
+        <svg viewBox="0 0 100 100">
+            <rect class="shape _01" x="25%" y="25%" width="50%" height="50%"/>
+            <rect class="shape _02" x="31.25%" y="31.25%" width="37.5%" height="37.5%"/>
+            <circle class="shape _03" cx="50%" cy="50%" r="15%"/>
+        </svg>
 
+    </div>
+    
     <script>
+        changeColor();
+
         document.querySelector('svg').addEventListener('click', changeColor);
 
         function changeColor() {
-            document.querySelector('rect[class="01"]').style.fill = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;  
-            document.querySelector('rect[class="02"]').style.fill = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
-            document.querySelector('circle').style.fill = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
-        }   
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                shape.style.fill = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            });
+        }
     </script>
 </body>

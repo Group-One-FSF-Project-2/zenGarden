@@ -1,0 +1,74 @@
+<style>
+    
+    .shape:hover ._03 {
+        animation: spin infinite linear 4s;
+    }
+
+    .shape:hover ._02 {
+        animation: spin infinite linear 3s;
+    }
+
+    .shape:hover ._01 {
+        animation: spin infinite linear 2s;
+    }
+
+    .shape:hover ._00 {
+        animation: spin infinite linear 1s;
+    }
+
+    @keyframes spin {
+        0%  { transform: rotate(0deg)  }
+        100%{ transform: rotate(360deg)}
+    }
+
+</style>
+
+
+<body>
+    
+    <h1>CLICK THE SCREEN</h1>
+
+    <button id="removeButton">Clear</button>
+
+    <script>
+        // Clear Screen
+        document.getElementById("removeButton").addEventListener("click", function() {
+            const shapes = document.querySelectorAll(".shape");
+            shapes.forEach(shape => shape.remove());
+        });
+    </script>
+
+    <svg id="svgContainer" width="100%" height="600px"></svg>
+
+    <script>
+        // Add shapes
+        document.getElementById("svgContainer").addEventListener("click", function() {
+            const svgNS = "http://www.w3.org/2000/svg";
+            const container = document.getElementById("svgContainer");
+
+            const group = document.createElementNS(svgNS, "g");
+            group.setAttribute("class", "shape");
+            group.setAttribute("transform", `translate(${Math.random() * container.clientWidth}, ${Math.random() * container.clientHeight})`);
+
+            for (let i = 3; i >= 0; i--) { // Start from the largest square
+                const size = 20 + i * 20;
+                const offset = -size / 2;
+                const rect = document.createElementNS(svgNS, "rect");
+                rect.setAttribute("class", `_0${i}`);
+                rect.setAttribute("x", offset);
+                rect.setAttribute("y", offset);
+                rect.setAttribute("width", size);
+                rect.setAttribute("height", size);
+                rect.setAttribute("fill", `hsl(${Math.random() * 360}, 100%, 50%)`); // Random color
+                group.appendChild(rect);
+            }
+
+            container.appendChild(group);
+
+            group.addEventListener("click", function() {
+                group.remove();
+            });
+        });
+    </script>
+
+</body>
