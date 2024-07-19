@@ -3,6 +3,8 @@ const sequelize = require('../config/connection');
 
 class plants extends Model {};
 
+plants.init({});
+
 
 
 
