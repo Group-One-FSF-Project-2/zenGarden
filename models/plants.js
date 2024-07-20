@@ -33,18 +33,18 @@ plants.init({
         allowNull: false
    },
    created_at: {
-        type: DataTypes.TIME,
-        allowNull: false
+    type: DataTypes.TIMESTAMP,
+    allowNull: false
    },
    updated_at: {
-        type: DataTypes.TIME,
-        allowNull: false
+    type: DataTypes.DATESTAMP,
+    allowNull: false
    }
    }, {
     sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'plants'
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'plants'
 });
 
 module.exports = plants;
