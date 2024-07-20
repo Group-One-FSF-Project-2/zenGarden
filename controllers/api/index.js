@@ -9,29 +9,4 @@ const plants = require('../../models/plants');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
