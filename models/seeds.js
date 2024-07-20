@@ -19,11 +19,11 @@ seeds.init({
         allowNull: false
     },
     created_at: {
-        type: DataTypes.TIMESTAMP,
+        type: DataTypes.TIME,
         allowNull: false
     },
     updated_at: {
-        type: DataTypes.TIMESTAMP,
+        type: DataTypes.TIME,
         allowNull: false
     }
 }, {

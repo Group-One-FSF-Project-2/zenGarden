@@ -9,29 +9,29 @@ users.init({
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
-    },
+},
     username: {
         type: DataTypes.STRING,
         allowNull: false
-    },
+},
     email: {
         type: DataTypes.STRING,
         allowNull: false
-    },
+},
     password: {
         type: DataTypes.STRING,
         allowNull: false
-    },
+},
     created_at: {
-        type: DataTypes.TIMESTAMP,
+        type: DataTypes.TIME,
         allowNull: false
-    },
+},
     updated_at: {
-        type: DataTypes.TIMESTAMP,
+        type: DataTypes.TIME,
         allowNull: false
     }
 }, {
-    sequelize,
+sequelize,
     freezeTableName: true,
     underscored: true,
     modelName: 'users'
