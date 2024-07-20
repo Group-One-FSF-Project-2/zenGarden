@@ -28,7 +28,7 @@ gardenplants.init({
         allowNull:false
     }
     }, {
-        sequelize,
+    sequelize,
         freezeTableName: true,
         underscored: true,
         modelName: 'gardenplants'
