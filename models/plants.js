@@ -33,11 +33,11 @@ plants.init({
         allowNull: false
    },
    created_at: {
-    type: DataTypes.TIMESTAMP,
+    type: DataTypes.TIME,
     allowNull: false
    },
    updated_at: {
-    type: DataTypes.DATESTAMP,
+    type: DataTypes.DATE,
     allowNull: false
    }
    }, {

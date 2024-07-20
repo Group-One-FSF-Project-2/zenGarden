@@ -5,6 +5,7 @@ const gardenplants = require('../models/gardenplants');
 const seeds = require('../models/seeds');
 const plants = require('../models/plants');
 
+//localhost:3001/api
 router.use('/api', api);
 
 router.get('/', async (req, res) => {
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
     return users.get({ plain: true });
   });
 
-  res.render('make', { sanitizedData });
+  res.render('plants', { sanitizedData });
 });
 
 module.exports = router;
