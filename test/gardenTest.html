@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Test Garden</title>
+    <link rel="stylesheet" type="text/css" href="./style/testStyle.css">
+</head>
+
+<body>
+    <nav>
+        <button id="test01">Test 01</button>
+        <button id="test02">Test 02</button>
+        <button id="test03">Test 03</button>
+        <button id="test04">Test 04</button>
+        <!-- <button id="test05">Test 05</button> -->
+        <button id="removeButton">Clear</button>
+    </nav>
+
+    <h2 id="counter">Counter: </h2>
+
+    <svg id="svgContainer" width="100%" height="600px"></svg>
+
+    <script>
+
+        const svgNS = "http://www.w3.org/2000/svg";
+        const container = document.getElementById("svgContainer");
+
+        // Test 01 - Square Flowers
+        document.getElementById("test01").addEventListener("click", function() {
+            test01();
+        });
+
+        // Test 02 - Radial Star
+        document.getElementById("test02").addEventListener("click", function() {
+            const originX = Math.random() * container.clientWidth;
+            const originY = Math.random() * container.clientHeight;
+            test02(4, originX, originY);
+        });
+
+        // Test 03 - Blob Bush
+        document.getElementById("test03").addEventListener("click", function() {
+            const originX = Math.random() * container.clientWidth;
+            const originY = Math.random() * container.clientHeight;
+            test03(30, originX, originY);
+        });
+
+        // Test 04 - Organge Harvest
+        document.getElementById("test04").addEventListener("click", function() {
+            const originX = Math.random() * container.clientWidth;
+            // Half the height + random height
+            const originY = container.clientHeight / 2 + Math.random() * container.clientHeight / 2;
+            test04(7, originX, originY);
+        });
+
+        // Test 05 - Add your own test here
+
+    </script>
+
+    <script>
+        // Clear Screen
+        document.getElementById("removeButton").addEventListener("click", function() {
+            const shapes = document.querySelectorAll(".shape");
+            shapes.forEach(shape => shape.remove());
+        });
+    </script>
+
+    <script src="./test01.js"></script>
+    <script src="./test02.js"></script>
+    <script src="./test03.js"></script>
+    <script src="./test04.js"></script>
+    <!-- <script src="./test05.js"></script> -->
+    
+</html>

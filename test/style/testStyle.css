@@ -1,0 +1,97 @@
+body {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ece91f;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+svg {
+    background-color: #a1c9a1;
+} 
+
+
+/* test02 */
+.shape:hover ._03 {
+    animation: spin infinite linear 4s;
+}
+
+.shape:hover ._02 {
+    animation: spin infinite linear 3s;
+}
+
+.shape:hover ._01 {
+    animation: spin infinite linear 2s;
+}
+
+.shape:hover ._00 {
+    animation: spin infinite linear 1s;
+}
+
+@keyframes spin {
+    0%  { transform: rotate(0deg)  }
+    100%{ transform: rotate(360deg)}
+}
+
+/* test03 */
+.bush {
+    animation: bush 3s infinite;
+}
+
+@keyframes bush {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* test04 */
+.leaf {
+    transition: all 0.5s;
+    animation: sway 5s ease-in-out infinite;
+}
+
+.fruit {
+    transition: all 0.5s;
+}
+
+.fruit:hover {
+    fill: rgb(255, 174, 0);
+    animation: grow 0.5s forwards;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(2);
+    }
+}
+
+@keyframes sway {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+
+    
+}
