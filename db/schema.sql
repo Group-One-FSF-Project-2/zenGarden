@@ -1,4 +1,4 @@
-DELETE DATABASE IF EXISTS garden_db;
+DROP DATABASE IF EXISTS garden_db;
 
 CREATE DATABASE garden_db;
 

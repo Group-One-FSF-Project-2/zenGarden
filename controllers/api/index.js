@@ -1,24 +1,10 @@
 const router = require('express').Router();
-const users = require('../../models/users');
-const gardenplants = require('../../models/gardenplants');
-const seeds = require('../../models/seeds');
-const plants = require('../../models/plants');
+const userRoutes = require('./userRoutes');
+const gardenplotRoutes = require('./gardenplotRoutes');
+const plantRoutes = require('./plantRoutes');
 
-router.get('/', async(req, res) => {
-    const allUsers = await users.findAll();
-})
-
-router.post('/', async (req, res) => {
-    const newUsers = user.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        created_at: req.body.created_at,
-        updated_at: req.body.updated_at
-    });
-    res.json(newUsers);
-})
-
-
+router.use('/users', userRoutes);
+router.use('/gardenplots', gardenplotRoutes);
+router.use('/plants', plantRoutes);
 
 module.exports = router;

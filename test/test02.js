@@ -26,6 +26,6 @@ const test02 = (growth, originX, originY) => {
         setTimeout(() => {
             group.remove(); // Remove the group after 1 second
             test02(growth + 1, originX, originY); // Call the function recursively with the same origin
-        }, 100); // 1-second delay before removing and creating the next group
+        }, 100); // .1-second delay before removing and creating the next group
     }
 }

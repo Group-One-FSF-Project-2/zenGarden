@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class gardenplants extends Model {}
+class Gardenplot extends Model {}
 
-gardenplants.init(
+Gardenplot.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -17,24 +17,27 @@ gardenplants.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      foreign_key: true,
-      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id',
+        unique: false
+      },
     },
-    created_at: {
-      type: DataTypes.TIME,
-      allowNull: false,
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
+    plant_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'plant',
+        key: 'id',
+        unique: false
+      },
     },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'gardenplants',
+    modelName: 'gardenplot',
   }
 );
 
-module.exports = gardenplants;
+module.exports = Gardenplot;

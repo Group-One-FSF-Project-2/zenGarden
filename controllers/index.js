@@ -1,20 +1,12 @@
 const router = require('express').Router();
-const api = require('./api');
-const users = require('../models/users');
-const gardenplants = require('../models/gardenplants');
-const seeds = require('../models/seeds');
-const plants = require('../models/plants');
+const apiRoutes = require('./api');
 
-//localhost:3001/api
-router.use('/api', api);
+// localhost:3001/api
+router.use('/api', apiRoutes);
 
-router.get('/', async (req, res) => {
-  const users = await users.findAll();
-  const sanitizedData = allUsers.map((users) => {
-    return users.get({ plain: true });
-  });
-
-  res.render('plants', { sanitizedData });
+// FOR TESTING  localhost:3001/garden
+router.get('/garden', (req, res) => {
+  res.json('Hello World');
 });
 
 module.exports = router;
