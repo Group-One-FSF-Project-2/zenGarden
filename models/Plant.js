@@ -19,10 +19,6 @@ Plant.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        location_x: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         //how many fruits can be picked from this plant
         pickable: { 
             type: DataTypes.INTEGER
