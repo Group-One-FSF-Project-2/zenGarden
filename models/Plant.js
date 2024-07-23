@@ -11,16 +11,16 @@ Plant.init(
             primaryKey: true,
             autoIncrement: true
         },
-        type: {
+        plant_type: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        variety: {
+        plant_variety: {
             type: DataTypes.STRING,
             allowNull: false
         },
         //how many fruits can be picked from this plant
-        pickable: { 
+        plant_pickable: { 
             type: DataTypes.INTEGER
         },
     }, 
