@@ -41,6 +41,5 @@ border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     border-radius: 50%;
     position: absolute;
     left: calc( 50% - 25px);
-    left: calc(50% - 25px);
+    top: calc( 50% - 25px);
 }
-/*  hey*/
