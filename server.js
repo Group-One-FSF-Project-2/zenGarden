@@ -4,7 +4,11 @@ const controllers = require('./controllers');
 //const exhbs = require('express-handlebars');
 
 // initialize models for sequelize
+<<<<<<< HEAD
 // const model = require('./models/index');
+=======
+const model = require('./models/index');
+>>>>>>> 2f9b4f74525dff5634783d93476e5de81c381fd0
 
 
 const app = express();
