@@ -14,7 +14,11 @@
         <button id="test03">Test 03</button>
         <button id="test04">Test 04</button>
         <button id="test05">Test 05</button>
+        <button id="test06">Test 06</button>
         <button id="removeButton">Clear</button>
+
+        <input type="range" id="slider" min="2" max="9" value="0" step="0.1">
+        <label for="slider">GROW</label>
     </nav>
 
     <h2 id="counter">Counter: </h2>
@@ -62,6 +66,15 @@
             test05(10, originX, originY);
         });
 
+        // Test 06 - Growing Tree
+        document.getElementById("test06").addEventListener("click", function() {
+            const originX = Math.random() * container.clientWidth;
+            // 80% of the height to the bottom
+            const originY = container.clientHeight * 0.8;
+            // TESTING 10 years
+            test06(originX, originY);
+        });
+
     </script>
 
     <script>
@@ -77,5 +90,6 @@
     <script src="./test03.js"></script>
     <script src="./test04.js"></script>
     <script src="./test05.js"></script>
+    <script src="./test06.js"></script>
     
 </html>
