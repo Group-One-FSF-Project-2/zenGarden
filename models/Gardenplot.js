@@ -20,7 +20,7 @@ Gardenplot.init(
       references: {
         model: 'user',
         key: 'id',
-        unique: false
+        unique: false,
       },
     },
     plant_id: {
@@ -28,7 +28,7 @@ Gardenplot.init(
       references: {
         model: 'plant',
         key: 'id',
-        unique: false
+        unique: false,
       },
     },
   },

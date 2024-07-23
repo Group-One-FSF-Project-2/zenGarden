@@ -6,7 +6,6 @@ const controllers = require('./controllers');
 // initialize models for sequelize
 const model = require('./models/index');
 
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -20,9 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(controllers);
 
-
 sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-        console.log('server started')
-    })
+  app.listen(PORT, () => {
+    console.log('server started');
+  });
 });
