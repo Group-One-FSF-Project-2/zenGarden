@@ -24,6 +24,12 @@ background: linear-gradient(135deg, black, rgb(238, 8, 238),rgb(90, 1, 90));
 border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 }
 
+.petal2 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, black, rgb(234, 238, 8),rgb(90, 1, 90));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;  
+}
 .one {
     transform: rotate(180deg);
 }
@@ -38,6 +44,16 @@ border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     height: 50px;
     width:50px;
     background: radial-gradient(black, rgb(238, 8, 238));
+    border-radius: 50%;
+    position: absolute;
+    left: calc( 50% - 25px);
+    top: calc( 50% - 25px);
+}
+
+.circle2 {
+    height: 50px;
+    width:50px;
+    background: radial-gradient(black, rgb(234, 238, 8));
     border-radius: 50%;
     position: absolute;
     left: calc( 50% - 25px);
