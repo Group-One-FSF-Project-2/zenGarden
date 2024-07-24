@@ -13,7 +13,7 @@ const Gardenplot = require('../models/Gardenplot');
 const gardenPlotData = require('../seeds/gardenplot-seeds.json');
 
 
-const userSeedData = async () => {
+const allSeedData = async () => {
     await sequelize.sync({
         force: true,
     });
@@ -22,51 +22,21 @@ const userSeedData = async () => {
         {individualHooks:true, 
         returning: true,
     });
-
-    process.exit(0);
-};
-
-const plantSeedData = async () => {
-    await sequelize.sync({
-        force: true,
-    });
-
     await Plant.bulkCreate(plantData, 
         {individualHooks:true, 
         returning: true,
     });
-
-    process.exit(0);
-};
-
-const plotPlantSeedData = async () => {
-    await sequelize.sync({
-        force: true,
-    });
-
-    await plotPlant.bulkCreate(plotPlantData, 
-        {individualHooks:true, 
-        returning: true,
-    });
-
-    process.exit(0);
-};
-
-const gardenPlotSeedData = async () => {
-    await sequelize.sync({
-        force: true,
-    });
-
     await Gardenplot.bulkCreate(gardenPlotData, 
         {individualHooks:true, 
         returning: true,
     });
-
+    await plotPlant.bulkCreate(plotPlantData, 
+        {individualHooks:true, 
+        returning: true,
+    });
+   
     process.exit(0);
 };
 
-userSeedData();
-plantSeedData();
-plotPlantSeedData();
-gardenPlotSeedData();
+allSeedData();
 
