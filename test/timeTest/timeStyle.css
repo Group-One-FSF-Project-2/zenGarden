@@ -16,3 +16,15 @@ nav {
 svg {
     background-color: #a1c9a1;
 } 
+
+.treeTop {
+    transition: all 1s;
+}
+
+.trunk {
+    transition: all 1s;
+}
+
+.petal {
+    transition: all 1s;
+}   

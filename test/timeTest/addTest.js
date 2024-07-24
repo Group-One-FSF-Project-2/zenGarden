@@ -81,14 +81,14 @@ const addFlower = (posX, growth, varietal) => {
         flowerPetal.setAttribute("y", 0);
         flowerPetal.setAttribute("width", growth * 2);
         flowerPetal.setAttribute("height", growth * 2);
-
         flowerPetal.setAttribute("stroke", "black");
-        flowerPetal.setAttribute("stroke-width", 1);
+        flowerPetal.setAttribute("stroke-width",.1);
         flowerPetal.setAttribute("fill", "pink");
         flowerPetal.setAttribute("class", "petal");
-        flowerPetal.setAttribute("transform", `translate(0, -50) rotate(${i * 90})`);
+        flowerPetal.setAttribute("transform", `translate(0, -50) rotate(${i * 90}) scale(${growth})`);
         flowerElement.appendChild(flowerPetal);
-    }
+    }    
+
 
     container.appendChild(flowerElement);
 
