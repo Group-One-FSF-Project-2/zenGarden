@@ -4,6 +4,12 @@ const growTree = () => {
     trees.forEach(tree => {
         // set the updated growth value
         let growth = parseInt(tree.getAttribute("data-growth"), 10);
+        
+        if (growth > 10) {
+            // if the tree is fully grown, stop growing
+            return;
+        }
+        
         growth++;
         tree.dataset.growth = growth;
 
@@ -25,6 +31,28 @@ const growBush = () => {
 
 
 const growFlower = () => {
+    const flowers = document.querySelectorAll("[data-type='flower']");
+    // loop through each flower
+    flowers.forEach(flower => {
+        // set the updated growth value
+        let growth = parseInt(flower.getAttribute("data-growth"), 10);
         
+        if (growth > 10) {
+            // if the flower is fully grown, stop growing
+            return;
+        }
+        
+        growth++;
+        flower.dataset.growth = growth;
+
+        // Select trunk and circle elements within the tree element
+        const flowerPetals = flower.querySelectorAll('.petal');
+        flowerPetals.forEach(petal => {
+            petal.setAttribute("width", growth * 2);
+            petal.setAttribute("height", growth * 2);
+        });
+    });    
+
+
 }
 
