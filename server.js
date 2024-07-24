@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(controllers);
 
 
-sequelize.sync().then(() => {
+sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => {
         console.log('server started')
     })
