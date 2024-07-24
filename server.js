@@ -12,7 +12,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
 const secret = {
   secret: 'Super secret secret',
   cookie: {
@@ -24,8 +23,8 @@ const secret = {
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
-  })
+    db: sequelize,
+  }),
 };
 
 app.use(session(secret));
@@ -39,7 +38,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
+app.get('/', (req, res) => {
+  res.render('home');
+});
+
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => 
-    console.log('Server started.'));
+  app.listen(PORT, () => {
+    console.log('server started on http://localhost:' + PORT);
+  });
 });

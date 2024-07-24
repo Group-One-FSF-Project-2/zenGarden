@@ -48,8 +48,13 @@ const growFlower = () => {
         // Select trunk and circle elements within the tree element
         const flowerPetals = flower.querySelectorAll('.petal');
         flowerPetals.forEach(petal => {
-            petal.setAttribute("width", growth * 2);
-            petal.setAttribute("height", growth * 2);
+            //scale the petal
+            const scale = growth;
+            // Get the current transform attribute
+            let currentTransform = petal.getAttribute("transform");
+            let newTransform = currentTransform.replace(/scale\(\S+\)/, `scale(${scale})`);
+
+            petal.setAttribute("transform", newTransform);
         });
     });    
 
