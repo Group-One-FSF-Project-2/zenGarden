@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Test Garden</title>
+    <link rel="stylesheet" type="text/css" href="./timeStyle.css">
+</head>
+
+<body>
+    <nav>
+        <div>
+            <button id="startTime">Start</button>
+            <button id="pauseTime">Pause</button>
+            <button id="advanceTime">Advance</button>
+
+            <button id="removeButton">Clear</button>
+
+            <!-- 
+            <input type="range" id="slider" min="2" max="9" value="0" step="0.1">
+            <label for="slider">GROW</label> 
+            -->
+
+        </div>
+        
+        <div>
+            <label>Add a Plant:</label>
+            <button id="addTree">Tree</button> 
+            <button id="addBush">Bush</button>
+            <button id="addFlower">Flower</button> 
+        </div>  
+    </nav>
+
+    <svg id="svgContainer" width="100%" height="70%"></svg>
+
+    <script>
+
+        const svgNS = "http://www.w3.org/2000/svg";
+        const container = document.getElementById("svgContainer");
+
+        // Add Tree
+        const addTreeBtn = document.getElementById("addTree");
+        const addBushBtn = document.getElementById("addBush");
+        const addFlowerBtn = document.getElementById("addFlower");
+
+        const posY = container.clientHeight * 0.9;
+
+        //on click add tree
+        addTreeBtn.addEventListener("click", function() {
+            const posX = Math.random() * container.clientWidth;
+            addTree(posX, 4, "apple");
+        });
+
+        //on click add bush
+        addBushBtn.addEventListener("click", function() {
+            const posX = Math.random() * container.clientWidth;
+            addBush(posX, 1, "blueberry");
+        });
+
+        //on click add flower
+        addFlowerBtn.addEventListener("click", function() {
+            const posX = Math.random() * container.clientWidth;
+            addFlower(posX, 1, "rose");
+        });
+
+        const startTimeBtn = document.getElementById("startTime");
+        const pauseTimeBtn = document.getElementById("pauseTime");
+        const advanceTimeBtn = document.getElementById("advanceTime");
+        
+     
+        
+        advanceTimeBtn.addEventListener("click", function() {
+            growTree();
+            growFlower();
+        });
+        
+        startTimeBtn.addEventListener("click", function() {
+            startTime();
+        });
+
+        pauseTimeBtn.addEventListener("click", function() {
+            pauseTime();
+        });
+        
+
+
+    </script>
+
+    <script>
+        // Clear Screen
+        document.getElementById("removeButton").addEventListener("click", function() {
+            const shapes = document.querySelectorAll(".plant");
+            shapes.forEach(plant => plant.remove());
+        });
+    </script>
+
+    <script src="./timeTest.js"></script>
+    <script src="./growTest.js"></script>
+    <script src="./addTest.js"></script>
+
+    
+</html>

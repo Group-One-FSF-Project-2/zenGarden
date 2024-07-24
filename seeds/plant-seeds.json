@@ -1,0 +1,17 @@
+[
+    {
+        "plant_type": "Tree",
+        "plant_variety": "Oak",
+        "plant_pickable": 10
+    },
+    {
+        "plant_type": "Flower",
+        "plant_variety": "Rose",
+        "plant_pickable": 15
+    },
+    {
+        "plant_type": "Bush",
+        "plant_variety": "Magnolia",
+        "plant_pickable": 5
+    }
+]

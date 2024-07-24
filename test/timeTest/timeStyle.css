@@ -1,0 +1,30 @@
+body {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ece91f;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+    flex-direction: column;
+}
+
+svg {
+    background-color: #a1c9a1;
+} 
+
+.treeTop {
+    transition: all 1s;
+}
+
+.trunk {
+    transition: all 1s;
+}
+
+.petal {
+    transition: all 1s;
+}   
