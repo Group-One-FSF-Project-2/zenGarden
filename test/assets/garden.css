@@ -24,6 +24,20 @@ background: linear-gradient(135deg, black, rgb(238, 8, 238),rgb(90, 1, 90));
 border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 }
 
+.petal2 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, black, rgb(234, 238, 8),rgb(90, 1, 90));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;  
+}
+
+.petal3 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, black, rgb(8, 173, 238),rgb(90, 1, 90));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;  
+}
+
 .one {
     transform: rotate(180deg);
 }
@@ -42,4 +56,113 @@ border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     position: absolute;
     left: calc( 50% - 25px);
     top: calc( 50% - 25px);
+}
+
+.circle2 {
+    height: 50px;
+    width:50px;
+    background: radial-gradient(black, rgb(234, 238, 8));
+    border-radius: 50%;
+    position: absolute;
+    left: calc( 50% - 25px);
+    top: calc( 50% - 25px);
+}
+
+.circle3 {
+    height: 50px;
+    width:50px;
+    background: radial-gradient(black, rgb(8, 173, 238));
+    border-radius: 50%;
+    position: absolute;
+    left: calc( 50% - 25px);
+    top: calc( 50% - 25px);
+}
+
+
+.tree1{
+    position:fixed;
+    margin-left:25px;
+    margin-top:335px;
+}
+
+.tree2{
+    position:fixed;
+    margin-left:105px;
+    margin-top:332px;
+}
+
+.tree3{
+    position:fixed;
+    margin-left:175px;
+    margin-top:330px;
+}
+
+.tree4{
+    position:fixed;
+    margin-left:245px;
+    margin-top:330px;
+}
+
+.tree-trunk{
+    position: fixed;
+    display:block;
+    width:5px;
+    height:30px;
+    background-color: brown;
+    border: 1px solid black;
+    margin-top:24px;
+    margin-left:13px;
+    z-index: 11;
+}
+
+.tree-leaves{
+    position: fixed;
+    display:block;
+    width: 35px;
+    height:35px;
+    border-radius: 50%;
+    background-color: green;
+    z-index: 12;
+}
+
+.tree-leaf-circle{
+    position: fixed;
+    display:block;
+    width: 15px;
+    height:15px;
+    border-radius: 50%;
+    background-color: green;
+}
+
+.tree-leaf-circle1{
+    margin-top:0px;
+    margin-left:-5px;
+}
+.tree-leaf-circle2{
+    margin-top:-5px;
+    margin-left:5px;
+}
+
+.tree-leaf-circle3{
+    margin-top:-5px;
+    margin-left:16px;
+}
+
+.tree-leaf-circle4{
+    margin-top:5px;
+    margin-left:23px;
+}
+
+.tree-leaf-circle5{
+    margin-top:18px;
+    margin-left:20px;
+}
+
+.tree-leaf-circle6{
+    margin-top:18px;
+    margin-left:-2px;
+}
+.tree-leaf-circle7{
+    margin-top:8px;
+    margin-left:-6px;
 }
