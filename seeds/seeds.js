@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 const User = require('../models/User');
 const userData = require('../seeds/user-seeds.json');
 
-<<<<<<< HEAD
 const seedData = async () => {
   await sequelize.sync({
     force: true,
@@ -15,7 +14,7 @@ const seedData = async () => {
 };
 
 seedData();
-=======
+
 const Plant = require('../models/Plant');
 const plantData = require('../seeds/plant-seeds.json');
 
@@ -53,4 +52,3 @@ const allSeedData = async () => {
 
 allSeedData();
 
->>>>>>> 10961878e789c766c82c4f989c7c7035577bb599
