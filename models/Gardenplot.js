@@ -23,14 +23,6 @@ Gardenplot.init(
         unique: false,
       },
     },
-    plant_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'plant',
-        key: 'id',
-        unique: false,
-      },
-    },
   },
   {
     sequelize,
