@@ -19,8 +19,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(controllers);
 
+<<<<<<< HEAD
 sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log('server started');
   });
 });
+=======
+
+sequelize.sync({force: false}).then(() => {
+    app.listen(PORT, () => {
+        console.log('server started')
+    })
+});
+>>>>>>> 10961878e789c766c82c4f989c7c7035577bb599

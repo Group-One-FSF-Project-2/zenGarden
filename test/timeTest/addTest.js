@@ -41,12 +41,55 @@ const addTree = (posX, growth, varietal) => {
 
 const addBush = (posX, growth, varietal) => {
     const bushElement = document.createElementNS(svgNS, "g");
-    bushElement.setAttribute("transform", `translate(${originX}, ${originY})`);
+    bushElement.setAttribute("transform", `translate(${posX}, ${posY})`);
+
+    bushElement.setAttribute("class", "plant");
+    bushElement.setAttribute("data-type", "bush");
+    bushElement.setAttribute("data-growth", growth);
+    bushElement.setAttribute("data-varietal", varietal);
+
+    const bushBlob = document.createElementNS(svgNS, "circle");
+    
 
 }
 
 
 const addFlower = (posX, growth, varietal) => {
+    const flowerElement = document.createElementNS(svgNS, "g");
+    flowerElement.setAttribute("transform", `translate(${posX}, ${posY})`);
 
+    flowerElement.setAttribute("class", "plant");
+    flowerElement.setAttribute("data-type", "flower");
+    flowerElement.setAttribute("data-growth", growth);
+    flowerElement.setAttribute("data-varietal", varietal);
+
+    const flowerStem = document.createElementNS(svgNS, "line");
+    flowerStem.setAttribute("x1", 0);
+    flowerStem.setAttribute("y1", 0);
+    flowerStem.setAttribute("x2", 0);
+    flowerStem.setAttribute("y2", 50);
+    flowerStem.setAttribute("stroke", "green");
+    flowerStem.setAttribute("stroke-width", 2);
+    flowerStem.setAttribute("class", "stem");
+    flowerStem.setAttribute("transform", `rotate(180)`);
+    flowerElement.appendChild(flowerStem);
+
+
+    for (let i = 0; i < 4; i++) {
+        const flowerPetal = document.createElementNS(svgNS, "rect");
+        flowerPetal.setAttribute("x", 0);
+        flowerPetal.setAttribute("y", 0);
+        flowerPetal.setAttribute("width", growth * 2);
+        flowerPetal.setAttribute("height", growth * 2);
+
+        flowerPetal.setAttribute("stroke", "black");
+        flowerPetal.setAttribute("stroke-width", 1);
+        flowerPetal.setAttribute("fill", "pink");
+        flowerPetal.setAttribute("class", "petal");
+        flowerPetal.setAttribute("transform", `translate(0, -50) rotate(${i * 90})`);
+        flowerElement.appendChild(flowerPetal);
+    }
+
+    container.appendChild(flowerElement);
 
 }

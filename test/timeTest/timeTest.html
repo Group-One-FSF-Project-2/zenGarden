@@ -43,7 +43,7 @@
         const addBushBtn = document.getElementById("addBush");
         const addFlowerBtn = document.getElementById("addFlower");
 
-        const posY = container.clientHeight * 0.8;
+        const posY = container.clientHeight * 0.9;
 
         //on click add tree
         addTreeBtn.addEventListener("click", function() {
@@ -53,13 +53,13 @@
 
         //on click add bush
         addBushBtn.addEventListener("click", function() {
-            const posX = Math.random() * 100;
+            const posX = Math.random() * container.clientWidth;
             addBush(posX, 1, "blueberry");
         });
 
         //on click add flower
         addFlowerBtn.addEventListener("click", function() {
-            const posX = Math.random() * 100;
+            const posX = Math.random() * container.clientWidth;
             addFlower(posX, 1, "rose");
         });
 
@@ -71,6 +71,7 @@
         
         advanceTimeBtn.addEventListener("click", function() {
             growTree();
+            growFlower();
         });
         
         startTimeBtn.addEventListener("click", function() {
