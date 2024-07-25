@@ -26,3 +26,4 @@ if(email && password) {
 };
 
 document.addEventListener('submit', addUserHandler);
+// Event listener
