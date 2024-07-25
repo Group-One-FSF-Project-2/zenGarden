@@ -2,7 +2,6 @@ const router = require('express').Router();
 const userRoutes = require('./userRoutes');
 const gardenplotRoutes = require('./gardenplotRoutes');
 const plantRoutes = require('./plantRoutes');
-const plantRoutes = require('./plant');
 
 
 router.use('/users', userRoutes);
