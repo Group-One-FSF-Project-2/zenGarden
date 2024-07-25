@@ -10,3 +10,9 @@
     z-index: 3;
 }
 
+.plantContainer {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    position: absolute;
+}

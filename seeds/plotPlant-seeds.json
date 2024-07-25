@@ -2,16 +2,19 @@
     {
         "plotId": 1,
         "plantId": 1,
-        "location_x": 2
+        "location_x": 2,
+        "location_y": 3
     },
     {
         "plotId": 1,
         "plantId": 2,
-        "location_x": 3
+        "location_x": 3,
+        "location_y": 2
     },
     {
         "plotId": 3,
         "plantId": 1,
-        "location_x": 2
+        "location_x": 2,
+        "location_y": 1
     }
 ]

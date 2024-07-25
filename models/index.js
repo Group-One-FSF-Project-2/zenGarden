@@ -19,20 +19,24 @@ const plotPlant = require('./plotPlant');
 // }
 // )
 
+//User has many gardenplots
 User.hasMany(Gardenplot, {
     foreignKey: 'user_id',
 });
 
+//gardenplots belong to users
 Gardenplot.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-Gardenplot.hasMany(plotPlant, {
-    foreignKey: 'plotId',
+//plots belong to many plants
+Gardenplot.belongsToMany(Plant, {
+    through: 'plotPlant',
 });
 
-Gardenplot.hasMany(plotPlant, {
-    foreignKey: 'plantId',
+//plants belong to many plots
+Plant.belongsToMany(Gardenplot, {
+    through: 'plotPlant',
 });
 
 module.exports = { Gardenplot, Plant, User, plotPlant };
