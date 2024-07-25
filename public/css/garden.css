@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+}
+
+.petal {
+width: 100px;
+height: 100px;
+background: linear-gradient(135deg, black, rgb(238, 8, 238),rgb(90, 1, 90));
+border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.one {
+    transform: rotate(180deg);
+}
+.two{
+    transform: rotate(270deg);
+}
+.three {
+    transform: rotate(90deg);
+}
+
+.circle{
+    height: 50px;
+    width:50px;
+    background: radial-gradient(black, rgb(238, 8, 238));
+    border-radius: 50%;
+    position: absolute;
+    left: calc( 50% - 25px);
+    left: calc(50% - 25px);
+}
+/*  hey*/
