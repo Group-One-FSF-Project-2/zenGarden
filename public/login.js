@@ -1,7 +1,7 @@
 const submit = document.querySelector('#submitbtn');
 // Login user logic
 const loginUserHandler = async(event) => {
-    event.preventDafault();
+    event.preventDefault();
 
     const email = document.querySelector('#emailInput');
     const password = document.querySelector('#passwordInput');
