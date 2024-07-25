@@ -29,10 +29,6 @@ plotPlant.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        location_y: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
     },
     {
         sequelize,
