@@ -71,17 +71,10 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-<<<<<<< HEAD
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log('server started on http://localhost:' + PORT);
-  });
-=======
 
 sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => {
         console.log('server started on http://localhost:' + PORT);
     })
 
->>>>>>> 5b82dd275dc1c0fd5d6be71ce54bb7d63aed77dc
 });
