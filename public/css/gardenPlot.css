@@ -1,0 +1,24 @@
+#treeContainer {
+    z-index: 1;
+}
+
+#bushContainer {
+    z-index: 2;
+}
+
+#flowerContainer {
+    z-index: 3;
+}
+
+.plantContainer {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    position: absolute;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
