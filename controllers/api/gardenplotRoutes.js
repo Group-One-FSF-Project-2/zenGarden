@@ -15,11 +15,11 @@ router.post('/', async (req, res) => {
 
 // updating or adding new plant to plot
  // add a plant to an existing garden plot by finding it by it's id
-//  req.body needs to include: plantId. create a new plotPlant and add the plotId and the plantId to it. 
+//  req.body needs to include: plantId  create a new plotPlant and add the plotId and the plantId to it. 
 router.put('/:id', async (req, res) => {
     
    try {
-    const newPlant = await plotPlant.update(req.body, {
+    const newPlant = await plotPlant.update(req.body.plantId, {
       
     })
 

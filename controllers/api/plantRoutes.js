@@ -14,8 +14,8 @@ router.post('/',  async (req, res) => {
     }
   });
 
-  router.put('/:plantId', async (req, res) => {
-    try {
-        const 
-    }
-  })
+  // router.put('/:plantId', async (req, res) => {
+  //   try {
+  //       const 
+  //   }
+  // })
