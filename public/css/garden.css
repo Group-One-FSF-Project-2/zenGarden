@@ -1,0 +1,12 @@
+#treeContainer {
+    z-index: 1;
+}
+
+#bushContainer {
+    z-index: 2;
+}
+
+#flowerContainer {
+    z-index: 3;
+}
+
