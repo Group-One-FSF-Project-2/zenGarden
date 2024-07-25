@@ -46,17 +46,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(routes);
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => 
+    console.log(`Server started on ${PORT}.`)
+ 
+  )
+});
+
 app.use(controllers);
 
 app.get('/', (req, res) => {
   res.render('home');
 });
-
-
-sequelize.sync({ force: false }).then (() => {
-  app.listen(PORT, () => 
-    console.log('server started on http://localhost:' + PORT)
-  )});
 
   //This was just in the wrong place, need to be before
 // app.use(controllers);
