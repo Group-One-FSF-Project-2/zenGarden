@@ -1,8 +1,12 @@
 const treeY = treeContainer.clientHeight * 0.8;
 
-const addTree = (posX, treeID, growth, varietal) => {
+const addTree = (posX, treeID, createdOn, varietal) => {
 
     const treeElement = document.createElementNS(svgNS, "g");
+    // growth in days
+    const growth = Math.floor((Date.now() - createdOn) / 1000 / 60 / 60 / 24);
+
+
 
     // set all trees height based on container height
     const treeHeight = treeContainer.clientHeight * 0.4;
@@ -53,6 +57,7 @@ const addTree = (posX, treeID, growth, varietal) => {
     treeElement.setAttribute("transform", `translate(${posX}, ${treeY})`);
     treeElement.setAttribute("class", "plant");
     treeElement.setAttribute("data-id", treeID);
+    treeElement.setAttribute("data-createdOn", createdOn);
     treeElement.setAttribute("data-type", "tree");
     treeElement.setAttribute("data-growth", growth);
     treeElement.setAttribute("data-varietal", varietal);
@@ -89,10 +94,12 @@ const addTree = (posX, treeID, growth, varietal) => {
         const fruit = document.createElementNS(svgNS, "circle");
         fruit.setAttribute("stroke", "black");
         fruit.setAttribute("stroke-width", 1);
-        fruit.setAttribute("fill", fruit);
-        let randomX = Math.random() * 180 - 90;
+        fruit.setAttribute("fill", fruitColor);
+        if (growth < 10) {fruit.setAttribute("display", "none");}
+        fruit.setAttribute("display", "none");
+        let randomX = Math.random() * 160 - 80;
         fruit.setAttribute("cx", randomX);
-        let randomY = Math.random() * 180 - 90;
+        let randomY = Math.random() * 160 - 80;
         fruit.setAttribute("cy", -treeHeight + randomY);
         fruit.setAttribute("r", 10);
         fruit.setAttribute("class", "fruit");

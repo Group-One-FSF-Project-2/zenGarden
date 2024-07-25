@@ -1,8 +1,10 @@
 const bushY = bushContainer.clientHeight * 0.85;
 
-const addbush = (posX, bushID, growth, varietal) => {
+const addbush = (posX, bushID, createdOn, varietal) => {
 
     const bushElement = document.createElementNS(svgNS, "g");
+    // growth in days
+    const growth = Math.floor((Date.now() - createdOn) / 1000 / 60 / 60 / 24);
 
     // set all bushs height based on container height
     const bushHeight = bushContainer.clientHeight * 0.2;

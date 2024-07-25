@@ -16,3 +16,9 @@
     border-style: solid;
     position: absolute;
 }
+
+#button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
