@@ -1,0 +1,73 @@
+<style>
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+    }
+
+    .svg-container {
+        position: relative;
+        width: 20em;
+        height: 20em;
+    }
+
+    rect, circle {     
+        transition: fill 1s; 
+        transform-origin: center;
+        transform-box: fill-box;
+    }
+
+    svg:hover .shape {
+            animation: spin infinite linear 2s;
+        }
+
+    svg:hover .shape._02 {
+        animation: spin infinite linear 1s;
+    }
+
+    svg:hover .shape._03 {
+        animation: pulse infinite 1s }
+
+    @keyframes spin {
+        0%  { transform: rotate(0deg)  }
+        100%{ transform: rotate(360deg)}
+    }
+
+    @keyframes pulse {
+        0%   { transform: scale(1) }
+        50%  { transform: scale(.8) }
+        100% { transform: scale(1) }
+    }
+
+</style>
+
+<body>
+    <h1>CLICK IT FOR COLOR</h1>
+
+    <div class="svg-container">
+   
+        <svg viewBox="0 0 100 100">
+            <rect class="shape _01" x="25%" y="25%" width="50%" height="50%"/>
+            <rect class="shape _02" x="31.25%" y="31.25%" width="37.5%" height="37.5%"/>
+            <circle class="shape _03" cx="50%" cy="50%" r="15%"/>
+        </svg>
+
+    </div>
+    
+    <script>
+        changeColor();
+
+        document.querySelector('svg').addEventListener('click', changeColor);
+
+        function changeColor() {
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                shape.style.fill = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            });
+        }
+    </script>
+</body>
