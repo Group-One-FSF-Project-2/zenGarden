@@ -5,10 +5,10 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 // const helpers = require('./utils/helpers'); //optional
 const controllers = require('./controllers');
-// const exhbs = require('express-handlebars');
+const exhbs = require('express-handlebars');
 
 // initialize models for sequelize
-// const model = require('./models/index');
+const model = require('./models/index');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
@@ -34,7 +34,7 @@ const secret = {
 app.use(session(secret));
 
 // app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+app.set('view engine', 'handlebars');
 const hbs = exhbs.create({});
 
 app.engine('handlebars', hbs.engine);
@@ -50,19 +50,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => 
-    console.log('Server started.'));
+  app.listen(PORT, () => {
+    console.log('Server started.');
+  });
+})
 
-app.use(controllers);
+  app.use(controllers);
 
-app.get('/', (req, res) => {
+  app.get('/', (req, res) => {
     res.render('home');
 });
 
+// sequelize.sync({force: false}).then(() => {
+//     app.listen(PORT, () => {
+//         console.log('server started on http://localhost:' + PORT);
+//     })
 
-sequelize.sync({force: false}).then(() => {
-    app.listen(PORT, () => {
-        console.log('server started on http://localhost:' + PORT);
-    })
-
-});
+// });
