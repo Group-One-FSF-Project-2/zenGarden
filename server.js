@@ -29,9 +29,16 @@ const secret = {
 
 app.use(session(secret));
 
+
+const hbs = exphbs.create();
+app.engine('handlebars', hbs.engine);
+//app.engine('handlebars', exphbs.create());
+app.set('view engine', 'handlebars');
+
 // app.engine('handlebars', hbs.engine);
 // app.engine('handlebars', exphbs());
 // app.set('view engine', 'handlebars');
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -48,7 +55,7 @@ app.get('/', (req, res) => {
 
 sequelize.sync({ force: false }).then (() => {
   app.listen(PORT, () => 
-    console.log('Server started.')
+    console.log('server started on http://localhost:' + PORT)
   )});
 
   //This was just in the wrong place, need to be before
