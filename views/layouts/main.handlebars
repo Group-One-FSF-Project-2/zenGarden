@@ -7,10 +7,44 @@
   <title>Zen Garden</title>
 </head>
 
-<body>
   <header>
-    <h1>Welcome to Zen!</h1>
+    <div class="login">
+    <img src = "images/Untitled design.png" alt="Logo" class="logo">
+        <ul>
+            <li><a href="#">Login</a></li>
+        </ul>  
+    </div> 
+    </header>
+
+    <body>
+        <div class="container my-5">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-create-tab" 
+                    data-bs-toggle="tab" data-bs-target="#nav-create" type="button"
+                     role="tab" aria-controls="nav-create" aria-selected="true">Create New Plot</button> 
+                     <button class="nav-link" id="nav-profile-tab" 
+                     data-bs-toggle="tab" data-bs-target="#nav-existing" type="button" 
+                     role="tab" aria-controls="nav-existing" aria-selected="false">Load Existing Plot</button>   
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-create" role="tabpanel" 
+                aria-labelledby="nav-create-tab">...</div>
+                <div class="tab-pane fade" id="nav-existing" role="tabpanel" 
+                aria-labelledby="nav-existing-tab">...</div>
+        </div>
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
   </header>
+
+  <body>
+  
   <main>
     <form>
       
