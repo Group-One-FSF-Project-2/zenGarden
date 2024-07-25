@@ -1,6 +1,6 @@
 const { response } = require("express");
 const { JSON } = require("sequelize");
-// The two lines above automatically generated. I left them in because I am noty sutre if we need them as requirements.
+// The two lines above automatically generated. I left them in because I am not sure if we need them as requirements.
 const addUserHandler = async(event) => {
     event.preventDefault();
 
