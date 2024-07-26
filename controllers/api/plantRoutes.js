@@ -1,12 +1,19 @@
 const router = require('express').Router();
 const { Plant, plotPlant } = require('../../models');
 
+router.get('/',  async (req, res) => {
+    try {
+      const newPlant = await Plant.findAll();
+  
+      res.status(200).json(newPlant);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  })
+
 router.post('/',  async (req, res) => {
     try {
-      const newPlant = await Plant.create({
-        ...req.body,
-        user_id: req.session.user_id,
-      });
+      const newPlant = await Plant.create(req.body);
   
       res.status(200).json(newPlant);
     } catch (err) {
@@ -14,8 +21,5 @@ router.post('/',  async (req, res) => {
     }
   });
 
-  router.put('/:plantId', async (req, res) => {
-    // try {
-    //     const 
-    // }
-  })
+ 
+  module.exports =  router
