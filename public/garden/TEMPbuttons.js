@@ -10,7 +10,7 @@ addTreeBtn.addEventListener("click", function() {
     //fetch call to add tree to garden
 
     // parameters: posX, treeID, createdOn, varietal
-    addTree(posX, 1, growthFromDb, 3);
+    addTree(posX, 1, growthFromDb, 1);
 });
 
 // Add Bush
@@ -24,7 +24,7 @@ addBushBtn.addEventListener("click", function() {
     // parameters: posX, bushID, createdOn, varietal
     console.log("posX", posX);
     console.log("growthFromDb", growthFromDb);
-    addBush(posX, 2, growthFromDb, 1);
+    addBush(posX, 2, growthFromDb, 3);
 });
 
 // Add Flower
@@ -35,8 +35,8 @@ addFlowerBtn.addEventListener("click", function() {
     let growthFromDb = Date.now() - 1000 * 60 * 60 * 48;
     //fetch call to add flower to garden
 
-    // parameters: posX, flowerID, createdOn, varietal
-    addFlower(posX, 1, 1, 1);
+    // parameters: posX, flowerID, varietal
+    addFlower(posX, 1, 1);
 }); 
 
 // Grow Plants
@@ -45,7 +45,7 @@ const growPlantsBtn = document.getElementById("growPlants");
 growPlantsBtn.addEventListener("click", function() {
     growTree();
     growBush();
-    // growFlower();
+    growFlower();
 });
 
 
