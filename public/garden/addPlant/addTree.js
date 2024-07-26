@@ -6,55 +6,41 @@ const addTree = (posX, treeID, createdOn, varietal) => {
     // growth in days
     const growth = Math.floor((Date.now() - createdOn) / 1000 / 60 / 60 / 24);
 
-
-
     // set all trees height based on container height
     const treeHeight = treeContainer.clientHeight * 0.4;
 
     // set trunk color based on varietal
     let trunkColor;
+    let topColor;
+    let fruitColor;
     
     switch (varietal) {
-        case "apple":
+        case 1:
             trunkColor = "brown";
-        case "orange":
-            trunkColor = "lightbrown";
-        case "plum":
-            trunkColor = "darkbrown";
-        default:
-            trunkColor = "brown";
-    }
-
-    // set top color based on varietal
-    let topColor;
-
-    switch (varietal) {
-        case "apple":
             topColor = "green";
-        case "orange":
+            fruitColor = "red";
+            break;
+        case 2:
+            trunkColor = "sienna";
             topColor = "lightgreen";
-        case "plum":
-            topColor = "darkgreen";
-        default:
-            topColor = "green";
-    }
-
-    // set fruit color based on varietal
-    let fruitColor;
-
-    switch (varietal) {
-        case "apple":
-            fruitColor = "red";
-        case "orange":
             fruitColor = "orange";
-        case "plum":
+            break;
+        case 3:
+            trunkColor = "saddlebrown";
+            topColor = "darkgreen";
             fruitColor = "purple";
+            break;
         default:
+            trunkColor = "brown";
+            topColor = "green";
             fruitColor = "red";
+            
     }
+
 
     // set tree intitial pos, classes, and data attributes
-    treeElement.setAttribute("transform", `translate(${posX}, ${treeY})`);
+    let treeYfuzz = treeY + Math.random() * 10 - 5;
+    treeElement.setAttribute("transform", `translate(${posX}, ${treeYfuzz})`);
     treeElement.setAttribute("class", "plant");
     treeElement.setAttribute("data-id", treeID);
     treeElement.setAttribute("data-createdOn", createdOn);
@@ -90,7 +76,7 @@ const addTree = (posX, treeID, createdOn, varietal) => {
 
     // (TESTING) create 5 randomly placed fruit using rotate
     // set fruit color to transparent when placement is set
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 8; i++) {
         const fruit = document.createElementNS(svgNS, "circle");
         fruit.setAttribute("stroke", "black");
         fruit.setAttribute("stroke-width", 1);
