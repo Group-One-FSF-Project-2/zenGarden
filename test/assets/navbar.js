@@ -11,7 +11,13 @@ closeModal.onclick = () => {
 };
 
 modalLogin.onclick = () => {
-    modalContainer.classList.add("open");
+    console.log("hello")
+    modalContainer.style.display = "block"
+    setTimeout(() => {
+        modalContainer.classList.add("open");
+    }, 10)
+ 
+    // modalContainer.classList.remove("hidden")
 };
 
 function closeModalContainer() {
@@ -23,7 +29,9 @@ create.onclick = () => {
     registrationForm.style.transform = "translate(0)";
 };
 
-loginHere.onclick = () => {
-    loginForm.style.transform = ("style");
-    registrationForm.style.transform = ("style"); // This was missing, assuming you want to move the registration form out of view.
-};
+
+
+// login.onclick = () => {
+//     loginForm.style.transform = ("style");
+//     registrationForm.style.transform = ("style"); // This was missing, assuming you want to move the registration form out of view.
+// };
