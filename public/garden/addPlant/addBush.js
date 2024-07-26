@@ -1,6 +1,6 @@
-const bushY = bushContainer.clientHeight * 0.85;
+const bushY = bushContainer.clientHeight * 0.70;
 
-const addbush = (posX, bushID, createdOn, varietal) => {
+const addBush = (posX, bushID, createdOn, varietal) => {
 
     const bushElement = document.createElementNS(svgNS, "g");
     // growth in days
@@ -9,34 +9,29 @@ const addbush = (posX, bushID, createdOn, varietal) => {
     // set all bushs height based on container height
     const bushHeight = bushContainer.clientHeight * 0.2;
 
-    // set bush color based on varietal
+    // set bush and fruit color based on varietal
     let bushColor;
+    let fruitColor;
     
     switch (varietal) {
-        case "blueberries":
-            bushColor = "mediumspringgreen";
-        case "raspberries":
+        case 1:
+            bushColor = "seagreen";
+            fruitColor = "blue";
+            break;
+        case 2:
             bushColor = "springgreen";
-        case "gooseberries":
+            fruitColor = "tomato";
+            break;
+        case 3:
             bushColor = "forestgreen";
+            fruitColor = "yellowgreen";
+            break;
         default:
             bushColor = "green";
-    }
-
-    // set fruit color based on varietal
-    let fruitColor;
-
-    switch (varietal) {
-        case "blueberries":
-            fruitColor = "blue";
-        case "raspberries":
-            fruitColor = "tomato";
-        case "gooseberries":
-            fruitColor = "yellowgreen";
-        default:
             fruitColor = "red";
     }
 
+    // let bushYfuzz = bushY + Math.random() * 20 - 10;
     // set bush intitial pos, classes, and data attributes
     bushElement.setAttribute("transform", `translate(${posX}, ${bushY})`);
     bushElement.setAttribute("class", "plant");
@@ -47,15 +42,16 @@ const addbush = (posX, bushID, createdOn, varietal) => {
 
     // create bush
     const bush = document.createElementNS(svgNS, "rect");
-    bush.setAttribute("x", 0);
+    bush.setAttribute("x", -20);
     bush.setAttribute("y", 0);
-    bush.setAttribute("transform", `rotate(180)`);
     bush.setAttribute("stroke", "black");
     bush.setAttribute("stroke-width", 1);
-    bush.setAttribute("fill", trunkColor);
+    bush.setAttribute("fill", bushColor);
+    // rounded top
+    bush.setAttribute("rx", 30);
+    bush.setAttribute("ry", 30);
     // center bush
-    bush.setAttribute("width", growth * 4);
-    bush.setAttribute("x", -(growth * 2));
+    bush.setAttribute("width", growth * 20);
     bush.setAttribute("height", bushHeight );
     bush.setAttribute("class", "bush");
     bushElement.appendChild(bush);
@@ -67,11 +63,13 @@ const addbush = (posX, bushID, createdOn, varietal) => {
         const fruit = document.createElementNS(svgNS, "circle");
         fruit.setAttribute("stroke", "black");
         fruit.setAttribute("stroke-width", 1);
-        fruit.setAttribute("fill", fruit);
-        let randomX = Math.random() * 180 - 90;
+        fruit.setAttribute("fill", fruitColor);
+        if (growth < 10) {fruit.setAttribute("display", "none");}
+        fruit.setAttribute("display", "none");
+        let randomX = -66.66 + ( i * 33.33 );
         fruit.setAttribute("cx", randomX);
-        let randomY = Math.random() * 180 - 90;
-        fruit.setAttribute("cy", -bushHeight + randomY);
+        let randomY = Math.random() * 40 - 20;
+        fruit.setAttribute("cy", bushHeight /2 + randomY);
         fruit.setAttribute("r", 10);
         fruit.setAttribute("class", "fruit");
         bushElement.appendChild(fruit);

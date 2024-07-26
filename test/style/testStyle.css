@@ -40,7 +40,7 @@ svg {
 }
 
 /* test03 */
-.bush {
+.bushTop {
     animation: bush 3s infinite;
 }
 
@@ -88,6 +88,4 @@ svg {
     100% {
         transform: rotate(0deg);
     }
-
-    
 }
