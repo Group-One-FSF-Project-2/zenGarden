@@ -3,13 +3,13 @@ const submit = document.querySelector('#submitbtn');
 const loginUserHandler = async(event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#emailInput');
+    const username = document.querySelector('#usernameInput');
     const password = document.querySelector('#passwordInput');
 
-    if(email && password) {
+    if(username && password) {
         const response = await fetch('../api/userRoutes', {
             method: 'POST',
-            body: JSON.stringify({email, password}),
+            body: JSON.stringify({username, password}),
             headers: {'Content-Type': 'application/json'},
         });
 
@@ -24,13 +24,13 @@ const loginUserHandler = async(event) => {
 const signupUserHandler = async(event) => {
     event.preventDafault();
 
-    const email = document.querySelector('#emaiSignUp');
+    const username = document.querySelector('#usernameSignUp');
     const password = document.querySelector('#passwordSignUp');
 
     if(email && password) {
         const response = await fetch('../api/userRoutes', {
             method: 'POST',
-            body: JSON.stringify({email, password}),
+            body: JSON.stringify({username, password}),
             headers: {'Content-Type': 'application/json'},
         });
 
