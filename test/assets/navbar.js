@@ -34,4 +34,4 @@ create.onclick = () => {
 // login.onclick = () => {
 //     loginForm.style.transform = ("style");
 //     registrationForm.style.transform = ("style"); // This was missing, assuming you want to move the registration form out of view.
-// };
+// };.
