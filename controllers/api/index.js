@@ -6,6 +6,7 @@ const plantRoutes = require('./plantRoutes');
 
 router.use('/users', userRoutes);
 router.use('/gardenplots', gardenplotRoutes);
+router.use('/plants', plantRoutes)
 
 
 
