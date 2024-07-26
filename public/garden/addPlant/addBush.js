@@ -59,18 +59,18 @@ const addBush = (posX, bushID, createdOn, varietal) => {
 
     // (TESTING) create 5 randomly placed fruit using rotate
     // set fruit color to transparent when placement is set
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 20; i++) {
         const fruit = document.createElementNS(svgNS, "circle");
         fruit.setAttribute("stroke", "black");
         fruit.setAttribute("stroke-width", 1);
         fruit.setAttribute("fill", fruitColor);
         if (growth < 10) {fruit.setAttribute("display", "none");}
         fruit.setAttribute("display", "none");
-        let randomX = -66.66 + ( i * 33.33 );
+        let randomX = -85  + ( i * 9 );
         fruit.setAttribute("cx", randomX);
-        let randomY = Math.random() * 40 - 20;
+        let randomY = Math.random() * 80 - 40;
         fruit.setAttribute("cy", bushHeight /2 + randomY);
-        fruit.setAttribute("r", 10);
+        fruit.setAttribute("r", 5);
         fruit.setAttribute("class", "fruit");
         bushElement.appendChild(fruit);
     }

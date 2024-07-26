@@ -83,9 +83,9 @@ const addTree = (posX, treeID, createdOn, varietal) => {
         fruit.setAttribute("fill", fruitColor);
         if (growth < 10) {fruit.setAttribute("display", "none");}
         fruit.setAttribute("display", "none");
-        let randomX = Math.random() * 160 - 80;
+        let randomX = Math.random() * 140 - 70;
         fruit.setAttribute("cx", randomX);
-        let randomY = Math.random() * 160 - 80;
+        let randomY = Math.random() * 140 - 70;
         fruit.setAttribute("cy", -treeHeight + randomY);
         fruit.setAttribute("r", 10);
         fruit.setAttribute("class", "fruit");

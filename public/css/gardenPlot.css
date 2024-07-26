@@ -36,6 +36,22 @@
     transition: all 1s;
 }
 
+.flowerStem {
+    transition: all 1s;
+}
+
+.flowerPetal {
+    transition: all 1s;
+}
+
+.flowerLeaf {
+    transition: all 1s;
+}
+
+.flowerCenter {
+    transition: all 1s;
+}
+
 .fruit {
     pointer-events: auto;
 }
