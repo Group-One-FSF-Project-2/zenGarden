@@ -23,8 +23,7 @@ router.post('/', async (req, res) => {
 });
 
 // updating or adding new plant to plot
- // add a plant to an existing garden plot by finding it by it's id
-//  req.body needs to include: plantId  create a new plotPlant and add the plotId and the plantId to it. 
+
 router.put('/:id', async (req, res) => {
     const plotId = req.params.id
    try {
@@ -39,12 +38,13 @@ router.put('/:id', async (req, res) => {
       res.status(200).json({ message: "updated successfully"});
     }
     
-    // const newPlant = await plotPlant.create({
-    //     plotId: plotId, 
-    //     plantId:req.body.plantId,
+    const newPlant = await plotPlant.create({
+        plotId: plotId, 
+        plantId:req.body.plantId,
+        location_x:location_x
  
-    // }); 
-    // res.status(200).json(newPlant)
+    }); 
+    res.status(200).json(newPlant)
    } catch (err) {
     res.status(400).json(err);
    }
@@ -69,7 +69,6 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json(err);
     }
   });
-
 
 
 module.exports = router;
