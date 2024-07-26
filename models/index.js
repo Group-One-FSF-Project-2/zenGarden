@@ -32,11 +32,13 @@ Gardenplot.belongsTo(User, {
 //plots belong to many plants
 Gardenplot.belongsToMany(Plant, {
     through: 'plotPlant',
+    foreignKey: 'plot_id'
 });
 
 //plants belong to many plots
 Plant.belongsToMany(Gardenplot, {
     through: 'plotPlant',
+    foreignKey: 'plant_id'
 });
 
 module.exports = { Gardenplot, Plant, User, plotPlant };
