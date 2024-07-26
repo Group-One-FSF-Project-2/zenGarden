@@ -4,14 +4,14 @@ const { JSON } = require("sequelize");
 const addUserHandler = async(event) => {
     event.preventDefault();
 
-const email = document.querySelector('#emailInput').value.trim();
+const username = document.querySelector('#usernameInput').value.trim();
 const password = document.querySelector('#passwordInput').value.trim();
 const submit = document.querySelector('#submitbtn');
 
 if(email && password) {
     const reponse = await fetch('../api/userRoutes', {
         method: 'POST',
-        body: JSON.stringify({email, password}),
+        body: JSON.stringify({username, password}),
         headers: {
             'Content-Type': 'application/json',
         },
