@@ -27,7 +27,7 @@ const signupUserHandler = async(event) => {
     const username = document.querySelector('#usernameSignUp');
     const password = document.querySelector('#passwordSignUp');
 
-    if(email && password) {
+    if(username && password) {
         const response = await fetch('../api/userRoutes', {
             method: 'POST',
             body: JSON.stringify({username, password}),
