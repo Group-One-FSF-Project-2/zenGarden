@@ -5,7 +5,7 @@ const growTree = () => {
         // set the updated growth value
         let growth = tree.getAttribute("data-growth");
         
-        if (growth > 10) {
+        if (growth > 9) {
             // show fruit if tree is fully grown
             const treeFruit = tree.querySelectorAll('.fruit');
             treeFruit.forEach(fruit => {

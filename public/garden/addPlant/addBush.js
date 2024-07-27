@@ -4,7 +4,8 @@ const addBush = (posX, bushID, createdOn, varietal) => {
 
     const bushElement = document.createElementNS(svgNS, "g");
     // growth in days
-    const growth = Math.floor((Date.now() - createdOn) / 1000 / 60 / 60 / 24);
+    if (createdOn > 10) {createdOn = 10;}
+    const growth = createdOn;
 
     // set all bushs height based on container height
     const bushHeight = bushContainer.clientHeight * 0.2;
@@ -65,7 +66,6 @@ const addBush = (posX, bushID, createdOn, varietal) => {
         fruit.setAttribute("stroke-width", 1);
         fruit.setAttribute("fill", fruitColor);
         if (growth < 10) {fruit.setAttribute("display", "none");}
-        fruit.setAttribute("display", "none");
         let randomX = -85  + ( i * 9 );
         fruit.setAttribute("cx", randomX);
         let randomY = Math.random() * 80 - 40;
