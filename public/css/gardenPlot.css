@@ -61,6 +61,7 @@
     transform-origin: center;
     transform-box: fill-box;
 }
+
 #bushContainer {
     pointer-events: none;
 }

@@ -6,7 +6,8 @@ const addTreeBtn = document.getElementById("addTree");
 
 addTreeBtn.addEventListener("click", function() {
     posX = Math.random() * treeContainer.clientWidth;
-    let growthFromDb = Date.now() - 1000 * 60 * 60 * 48;
+    // hardcoded growth time for testing
+    let growthFromDb = 3;
     //fetch call to add tree to garden
 
     // parameters: posX, treeID, createdOn, varietal
@@ -18,7 +19,8 @@ const addBushBtn = document.getElementById("addBush");
 
 addBushBtn.addEventListener("click", function() {
     posX = Math.random() * bushContainer.clientWidth;
-    let growthFromDb = Date.now() - 1000 * 60 * 60 * 48;
+    // hardcoded growth time for testing
+    let growthFromDb = 2;
     //fetch call to add bush to garden
 
     // parameters: posX, bushID, createdOn, varietal
