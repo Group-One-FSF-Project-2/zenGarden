@@ -1,8 +1,7 @@
-<h3>{{plot_name}}</h3>
+<h1>{{plot_name}}</h1>
 
-<form id="addPlantForm" method="POST" action="/addPlantForm">
+<form id="addPlantForm" value={{plotId}}>
 
-  
   <fieldset class="form-group">
     <div class="form-group">
       <label for="varietal">Choose a Varietal:</label>
@@ -29,7 +28,7 @@
         id="plantPosition"
         name="position"
         min="0"
-        max="100"
+        max="1000"
         value="0"
         step="1"
       />
@@ -41,63 +40,30 @@
 </form>
 
 <script>
-  // global variable for the namespace 
-  const svgNS = "http://www.w3.org/2000/svg";
-</script>
-
-<script>
   document.getElementById('plantPosition').addEventListener('input', function() {
     document.getElementById('positionLabel').innerText = this.value;
   });
 
   document.getElementById('addPlantForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const formData = new FormData(this);
-    console.log('Form data:', formData);
+    console.log(event);
+    let plantId = document.getElementById('varietal').value;
+    let location_x = document.getElementById('plantPosition').value;
+    let plotId = document.getElementById('addPlantForm').getAttribute('value');
+    console.log(plantId, location_x, plotId);
 
-    const varietal = parseInt(formData.get('varietal'), 10);
-    const position = formData.get('position');
-    // testing how to get plotId
-    const plotId = {{plot_Id}};
 
-    console.log('Varietal:', varietal);
-    console.log('Position:', position);
-
-    switch (varietal) {
-      case 1:
-      case 2:
-      case 3:
-        fetch(`/api/gardenplots/${plotId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(formData))
-        })
-        .then(response => response.json())
-        .then(data => {
-          // testing, will add the SVG call here
-          console.log('Success:', data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-        break;
-      case 4:
-      case 5:
-      case 6:
-        // getting tree first
-        addBush();  
-        break;
-      case 7:
-      case 8:
-      case 9:
-        addFlower();
-        break;
-      default:
-        console.error('Invalid varietal:', varietal);
-    }
+    submitForm({
+      plotId: parseInt(plotId, 10),
+      plantId: parseInt(plantId, 10),
+      location_x: parseInt(location_x, 10)
+    });
   });
+
 </script>
 
+
+<script src="/garden/form/form.js"></script>
 <script src="/garden/addPlant/addTree.js"></script>
 <script src="/garden/addPlant/addBush.js"></script>
 <script src="/garden/addPlant/addFlower.js"></script>

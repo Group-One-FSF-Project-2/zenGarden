@@ -61,8 +61,8 @@ app.use(controllers);
 // TESTING WITH PARAMETERS - Scott 28Jul
 app.get('/', (req, res) => {
   res.render('home', {
-    plot_Id: 1,
-    plot_name: 'Test Plot',});
+    plotId: 3,
+    plot_name: 'My new garden',});
 });
 
   //This was just in the wrong place, need to be before
