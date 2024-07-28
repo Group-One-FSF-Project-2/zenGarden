@@ -1,17 +1,47 @@
 [
     {
-        "plant_type": "Tree",
-        "plant_variety": "Oak",
-        "plant_pickable": 10
+        "plant_type": "tree",
+        "plant_variety": "apple",
+        "plant_pickable": 8
     },
     {
-        "plant_type": "Flower",
-        "plant_variety": "Rose",
+        "plant_type": "tree",
+        "plant_variety": "orange",
+        "plant_pickable": 8
+    },
+    {
+        "plant_type": "tree",
+        "plant_variety": "plum",
+        "plant_pickable": 8
+    },
+    {
+        "plant_type": "bush",
+        "plant_variety": "blueberry",
         "plant_pickable": 15
     },
     {
-        "plant_type": "Bush",
-        "plant_variety": "Magnolia",
-        "plant_pickable": 5
+        "plant_type": "bush",
+        "plant_variety": "red_currant",
+        "plant_pickable": 15
+    },
+    {
+        "plant_type": "bush",
+        "plant_variety": "gooseberry",
+        "plant_pickable": 15
+    },
+    {
+        "plant_type": "flower",
+        "plant_variety": "daisy",
+        "plant_pickable": 1
+    },
+    {
+        "plant_type": "flower",
+        "plant_variety": "cosmos",
+        "plant_pickable": 1
+    },
+    {
+        "plant_type": "flower",
+        "plant_variety": "aster",
+        "plant_pickable": 1
     }
 ]

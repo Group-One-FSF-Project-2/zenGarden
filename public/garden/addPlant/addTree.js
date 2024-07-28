@@ -1,6 +1,6 @@
 const treeY = treeContainer.clientHeight * 0.8;
 
-const addTree = (posX, treeID, createdOn, varietal) => {
+const addTree = (posX, createdOn, varietal) => {
   const treeElement = document.createElementNS(svgNS, "g");
   // growth in hours
   if (createdOn > 10) {
@@ -43,7 +43,6 @@ const addTree = (posX, treeID, createdOn, varietal) => {
 
   treeElement.setAttribute("transform", `translate(${posX}, ${treeY})`);
   treeElement.setAttribute("class", "plant");
-  treeElement.setAttribute("data-id", treeID);
   treeElement.setAttribute("data-createdOn", createdOn);
   treeElement.setAttribute("data-type", "tree");
   treeElement.setAttribute("data-growth", growth);
