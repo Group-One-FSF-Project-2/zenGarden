@@ -1,27 +1,34 @@
-{{!-- temporary buttons for TESTING --}}
+{{! TESTING THE GARDEN VIEW WITH HANDLEBARS - Scott}}
+{{> garden}}
+{{> plantForm}}
 
+
+
+
+{{!-- 
 <div id="button-container">
-    <button id="addTree">Tree</button>
-    <button id="addBush">Bush</button>
-    <button id="addFlower">Flower</button>
-    <button id="growPlants">Grow</button>
-    <button id="fetchGarden">Fetch</button>
+  <button id="addTree">Tree</button>
+  <button id="addBush">Bush</button>
+  <button id="addFlower">Flower</button>
+  <button id="growPlants">Grow</button>
+  <button id="fetchGarden">Fetch</button>
 </div>
 
-<svg id="treeContainer" class="plantContainer" width="1000" height="500px"></svg>
+<section id="gardenView">
 
-<svg id="bushContainer" class="plantContainer" width="1000px" height="500px"></svg>
+  <svg id="treeContainer" class="plantContainer"></svg>
 
-<svg id="flowerContainer"  class="plantContainer" width="1000px" height="500px"></svg>
+  <svg id="bushContainer" class="plantContainer"></svg>
+
+  <svg id="flowerContainer" class="plantContainer"></svg>
+
+</section>
 
 <script>
-    // global variable for the namespace
-    const svgNS = "http://www.w3.org/2000/svg";   
+  // global variable for the namespace 
+  const svgNS = "http://www.w3.org/2000/svg";
 
-    
 </script>
-
-
 
 <script src="/garden/addPlant/addTree.js"></script>
 <script src="/garden/addPlant/addBush.js"></script>
@@ -35,4 +42,4 @@
 
 <script src="/garden/misc.js"></script>
 
-<script src="/garden/TEMPbuttons.js"></script>
+<script src="/garden/TEMPbuttons.js"></script> --}}

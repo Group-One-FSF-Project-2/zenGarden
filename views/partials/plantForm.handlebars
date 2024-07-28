@@ -1,0 +1,69 @@
+<h1>{{plot_name}}</h1>
+
+<form id="addPlantForm" value={{plotId}}>
+
+  <fieldset class="form-group">
+    <div class="form-group">
+      <label for="varietal">Choose a Varietal:</label>
+      <select id="varietal" name="varietal" class="form-control">
+        <option value="1">Apple</option>
+        <option value="2">Orange</option>
+        <option value="3">Plum</option>
+        <option value="4">Blueberry</option>
+        <option value="5">Red Currants</option>
+        <option value="6">Gooseberry</option>
+        <option value="7">Daisy</option>
+        <option value="8">Cosmos</option>
+        <option value="9">Aster</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <div class="form-group">
+      <label for="plantPosition">Choose Position:</label>
+      <input
+        type="range"
+        class="form-control-range"
+        id="plantPosition"
+        name="position"
+        min="0"
+        max="1000"
+        value="0"
+        step="1"
+      />
+      <label id="positionLabel" class="form-text">0</label>
+    </div>
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary">Plant</button>
+</form>
+
+<script>
+  document.getElementById('plantPosition').addEventListener('input', function() {
+    document.getElementById('positionLabel').innerText = this.value;
+  });
+
+  document.getElementById('addPlantForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    console.log(event);
+    let plantId = document.getElementById('varietal').value;
+    let location_x = document.getElementById('plantPosition').value;
+    let plotId = document.getElementById('addPlantForm').getAttribute('value');
+    console.log(plantId, location_x, plotId);
+
+
+    submitForm({
+      plotId: parseInt(plotId, 10),
+      plantId: parseInt(plantId, 10),
+      location_x: parseInt(location_x, 10)
+    });
+  });
+
+</script>
+
+
+<script src="/garden/form/form.js"></script>
+<script src="/garden/addPlant/addTree.js"></script>
+<script src="/garden/addPlant/addBush.js"></script>
+<script src="/garden/addPlant/addFlower.js"></script>

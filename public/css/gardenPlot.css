@@ -1,105 +1,146 @@
+#gardenView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  height: 70vh;
+  width: 100%;
+}
+
+/* create 3 "layer" to keep each plant type in order */
 #treeContainer {
-    z-index: 1;
+  z-index: 1;
+  background-color: rgb(149, 205, 219);
 }
 
 #bushContainer {
-    z-index: 2;
+  z-index: 2;
 }
 
 #flowerContainer {
-    z-index: 3;
+  z-index: 3;
 }
 
 .plantContainer {
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    position: absolute;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  position: absolute;
+  width: 1000px;
+  height: 600px;
 }
 
 #button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.bush {
-    transition: all 1s;
+[data-type="tree"] * {
+  transition: all 1s;
 }
 
-.treeTop {
-    transition: all 1s;
-    animation: sway 5s ease-in-out infinite;
+[data-type="bush"] * {
+  transition: all 1s;
 }
 
-.trunk {
-    transition: all 1s;
+[data-type="flower"] * {
+  transition: all 1s;
 }
 
-.flowerStem {
-    transition: all 1s;
+/* give movement to each plant type */
+.treeGroup {
+  animation: swayTree 10s ease-in-out alternate infinite;
 }
 
-.flowerPetal {
-    transition: all 1s;
+.bushGroup {
+  animation: swayBush 7.5s ease-in-out alternate infinite;
 }
 
-.flowerLeaf {
-    transition: all 1s;
+.flowerGroup {
+  animation: swayFlower 5s ease-in-out alternate infinite;
 }
 
-.flowerCenter {
-    transition: all 1s;
+/* give motion to the bush fruit */
+.bushFruit1 {
+  animation: bushFruit1 1s ease-in-out alternate infinite;
 }
 
-.fruit {
-    pointer-events: auto;
+.bushFruit2 {
+  animation: bushFruit2 1s ease-in-out alternate infinite;
 }
 
-.fruit:hover {
-    animation: grow 0.5s forwards;
-    transform-origin: center;
-    transform-box: fill-box;
+/* target the tree fruit to be pickable */
+.treeGroup .fruit {
+  pointer-events: auto;
 }
 
+.treeGroup .fruit:hover {
+  animation: grow 0.5s forwards;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* allow pointer events to the treeContainer */
 #bushContainer {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 #flowerContainer {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 @keyframes grow {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.5);
-    }
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
 }
 
-
-@keyframes sway {
-    0% {
-        transform: rotate(0deg);
-    }
-    50% {
-        transform: rotate(.5deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
+@keyframes swayTree {
+  0% {
+    transform: skewX(-2deg);
+  }
+  100% {
+    transform: skewX(2deg);
+  }
 }
 
-/* @keyframes bush {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.03);
-    }
-    100% {
-        transform: scale(1);
-    }
-} */
+@keyframes swayBush {
+  0% {
+    transform: skewX(-3deg);
+  }
+  100% {
+    transform: skewX(3deg);
+  }
+}
+
+@keyframes swayFlower {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes bushFruit1 {
+  0% {
+    transform: translateY(0) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0.5px) rotate(180deg);
+  }
+}
+
+@keyframes bushFruit2 {
+  0% {
+    transform: translatex(0) rotate(180deg);
+  }
+  100% {
+    transform: translatex(0.5px) rotate(180deg);
+  }
+}
