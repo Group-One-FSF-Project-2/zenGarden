@@ -30,13 +30,17 @@ router.post('/', async (req, res) => {
 });
 
 // updating or adding a new plant to gardenplot
+// MADE CHANGES TO THIS ROUTE TO INCLUDE THE plantId
+// Scott 28Jul,  TESTING TESTING TESTING
 
 router.put('/:id', async (req, res) => {
   const plotId = parseInt(req.params.id);
   try {
       const newPlant = await plotPlant.create({
       ...req.body,
-      plot_id: plotId,     
+      plot_id: plotId,
+      plantId: req.body.varietalRadios,
+      location_x: req.body.position
     });
     res.status(200).json(newPlant);
   } catch (err) {

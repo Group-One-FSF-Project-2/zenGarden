@@ -58,8 +58,11 @@ sequelize.sync({ force: false }).then(() => {
 
 app.use(controllers);
 
+// TESTING WITH PARAMETERS - Scott 28Jul
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('home', {
+    plot_Id: 1,
+    plot_name: 'Test Plot',});
 });
 
   //This was just in the wrong place, need to be before

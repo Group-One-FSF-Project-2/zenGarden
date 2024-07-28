@@ -14,17 +14,17 @@ const addFlower = (posX, flowerID, varietal) => {
   let centerColor;
 
   switch (varietal) {
-    case 1:
+    case 7:
       stemColor = "green";
       petalColor = "white";
       centerColor = "yellow";
       break;
-    case 2:
+    case 8:
       stemColor = "green";
       petalColor = "pink";
       centerColor = "salmon";
       break;
-    case 3:
+    case 9:
       stemColor = "green";
       petalColor = "purple";
       centerColor = "white";

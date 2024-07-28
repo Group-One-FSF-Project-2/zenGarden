@@ -16,15 +16,15 @@ const addBush = (posX, bushID, createdOn, varietal) => {
   let fruitColor;
 
   switch (varietal) {
-    case 1:
+    case 4:
       bushColor = "seagreen";
       fruitColor = "blue";
       break;
-    case 2:
+    case 5:
       bushColor = "springgreen";
       fruitColor = "tomato";
       break;
-    case 3:
+    case 6:
       bushColor = "forestgreen";
       fruitColor = "yellowgreen";
       break;

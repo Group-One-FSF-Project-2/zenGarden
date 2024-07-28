@@ -24,8 +24,6 @@ addBushBtn.addEventListener("click", function () {
   //fetch call to add bush to garden
 
   // parameters: posX, bushID, createdOn, varietal
-  console.log("posX", posX);
-  console.log("growthFromDb", growthFromDb);
   addBush(posX, 2, growthFromDb, 3);
 });
 

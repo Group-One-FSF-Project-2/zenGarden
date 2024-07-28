@@ -1,23 +1,25 @@
 // miscellanous functions for the garden
 
 //fetch call to add all plants to garden
-const fetchGarden = document.getElementById("fetchGarden");
 
-// hardcoding the id, will be chosen from form
-const plotId = 1; // TESTING PURPOSES ONLY
-fetchGarden.addEventListener("click", async function () {
-  const response = await fetch("/api/gardenplots", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  const gardenPlots = await response.json();
 
-  const choosePlot = gardenPlots.find((plot) => plot.id === plotId);
+// const fetchGarden = document.getElementById("fetchGarden");
 
-  if (choosePlot) {
-    generateGarden(choosePlot);
-  }
-});
+// // hardcoding the id, will be chosen from form
+// const plotId = 1; // TESTING PURPOSES ONLY
+// fetchGarden.addEventListener("click", async function () {
+//   const response = await fetch("/api/gardenplots", {
+//     method: "GET",
+//     headers: { "Content-Type": "application/json" },
+//   });
+//   const gardenPlots = await response.json();
+
+//   const choosePlot = gardenPlots.find((plot) => plot.id === plotId);
+
+//   if (choosePlot) {
+//     generateGarden(choosePlot);
+//   }
+// });
 
 // generate garden with choosePlot
 
