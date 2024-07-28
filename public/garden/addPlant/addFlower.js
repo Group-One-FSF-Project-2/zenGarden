@@ -1,9 +1,9 @@
-const flowerY = flowerContainer.clientHeight * 0.95;
+const flowerY = flowerContainer.clientHeight * 0.90;
 
 const addFlower = (posX, flowerID, varietal) => {
 
     const flowerElement = document.createElementNS(svgNS, "g");
-    // growth in days
+    // flowers will grow immediately
     const growth = 0;
 
     // set all flowers height based on container height
@@ -37,15 +37,19 @@ const addFlower = (posX, flowerID, varietal) => {
             
     }
 
-
     // set flower intitial pos, classes, and data attributes
-    let flowerYfuzz = flowerY + Math.random() * 10 - 5;
+    let flowerYfuzz = flowerY + Math.random() * 20 - 10;
     flowerElement.setAttribute("transform", `translate(${posX}, ${flowerYfuzz})`);
     flowerElement.setAttribute("class", "plant");
     flowerElement.setAttribute("data-id", flowerID);
     flowerElement.setAttribute("data-type", "flower");
     flowerElement.setAttribute("data-varietal", varietal);
     flowerElement.setAttribute("data-growth", growth);
+
+    // create a group element to wrap the flower components
+    // so the entire flower can be animated together
+    const flowerGroup = document.createElementNS(svgNS, "g");
+    flowerGroup.setAttribute("class", "flowerGroup");
 
     // create flower stem
     const stem = document.createElementNS(svgNS, "rect");
@@ -57,9 +61,9 @@ const addFlower = (posX, flowerID, varietal) => {
     stem.setAttribute("fill", stemColor);
     stem.setAttribute("class", "flowerStem");
     stem.setAttribute("transform", `rotate(180)`);
-    flowerElement.appendChild(stem);
+    flowerGroup.appendChild(stem);
 
-    //create flower leaves
+    // create flower leaves
     for (let i = 0; i < 2; i++) {
         const leaf = document.createElementNS(svgNS, "ellipse");
         leaf.setAttribute("stroke", "black");
@@ -71,7 +75,7 @@ const addFlower = (posX, flowerID, varietal) => {
         leaf.setAttribute("ry", 0);
         leaf.setAttribute("class", "flowerLeaf");
         leaf.setAttribute("transform", `translate(0, ${-flowerHeight / 4}) rotate(${30 + i * -60}) translate(0, ${flowerHeight / 4 - 20})`);
-        flowerElement.appendChild(leaf);
+        flowerGroup.appendChild(leaf);
     }
 
 
@@ -87,7 +91,7 @@ const addFlower = (posX, flowerID, varietal) => {
         petal.setAttribute("ry", 0);
         petal.setAttribute("class", "flowerPetal");
         petal.setAttribute("transform", `translate(0, ${-flowerHeight}) rotate(${30 + i * 60}) translate(0, ${flowerHeight})`);
-        flowerElement.appendChild(petal);
+        flowerGroup.appendChild(petal);
     }
 
     // create flower center
@@ -99,10 +103,11 @@ const addFlower = (posX, flowerID, varietal) => {
     flowerCenter.setAttribute("cy", -flowerHeight);
     flowerCenter.setAttribute("r", 0);
     flowerCenter.setAttribute("class", "flowerCenter");
-    flowerElement.appendChild(flowerCenter);
+    flowerGroup.appendChild(flowerCenter);
    
-console.log(flowerElement);
+    // Append the group to the flower element
+    flowerElement.appendChild(flowerGroup);
 
-    // append flower to flowerContainer
+    // Append flower to container
     flowerContainer.appendChild(flowerElement);
 }

@@ -3,7 +3,7 @@ const treeY = treeContainer.clientHeight * 0.8;
 const addTree = (posX, treeID, createdOn, varietal) => {
 
     const treeElement = document.createElementNS(svgNS, "g");
-    // growth in days
+    // growth in hours
     if (createdOn > 10) {createdOn = 10;}
 
     const growth = createdOn;
@@ -41,8 +41,8 @@ const addTree = (posX, treeID, createdOn, varietal) => {
 
 
     // set tree intitial pos, classes, and data attributes
-    let treeYfuzz = treeY + Math.random() * 10 - 5;
-    treeElement.setAttribute("transform", `translate(${posX}, ${treeYfuzz})`);
+    
+    treeElement.setAttribute("transform", `translate(${posX}, ${treeY})`);
     treeElement.setAttribute("class", "plant");
     treeElement.setAttribute("data-id", treeID);
     treeElement.setAttribute("data-createdOn", createdOn);
@@ -50,6 +50,12 @@ const addTree = (posX, treeID, createdOn, varietal) => {
     treeElement.setAttribute("data-growth", growth);
     treeElement.setAttribute("data-varietal", varietal);
 
+    // Create a group element to wrap the tree components
+    const treeGroup = document.createElementNS(svgNS, "g");
+    treeGroup.setAttribute("class", "treeGroup");
+
+
+    let treeHeightfuzz = treeHeight + Math.random() * 50 - 25;
     // create tree trunk
     const trunk = document.createElementNS(svgNS, "rect");
     trunk.setAttribute("x", 0);
@@ -61,9 +67,9 @@ const addTree = (posX, treeID, createdOn, varietal) => {
     // center trunk
     trunk.setAttribute("width", growth * 4);
     trunk.setAttribute("x", -(growth * 2));
-    trunk.setAttribute("height", treeHeight );
+    trunk.setAttribute("height", treeHeightfuzz );
     trunk.setAttribute("class", "trunk");
-    treeElement.appendChild(trunk);
+    treeGroup.appendChild(trunk);
 
     // create tree top
     const circle = document.createElementNS(svgNS, "circle");
@@ -71,28 +77,34 @@ const addTree = (posX, treeID, createdOn, varietal) => {
     circle.setAttribute("stroke-width", 1);
     circle.setAttribute("fill", topColor);
     circle.setAttribute("cx", 0);
-    circle.setAttribute("cy", -treeHeight);
+    circle.setAttribute("cy", -treeHeightfuzz);
     circle.setAttribute("r", growth * 10);
     circle.setAttribute("class", "treeTop");
-    treeElement.appendChild(circle);
+    treeGroup.appendChild(circle);
 
-    // (TESTING) create 5 randomly placed fruit using rotate
-    // set fruit color to transparent when placement is set
+    // set fruit color to display:none until bush is fully grown
     for (let i = 0; i < 8; i++) {
         const fruit = document.createElementNS(svgNS, "circle");
         fruit.setAttribute("stroke", "black");
         fruit.setAttribute("stroke-width", 1);
         fruit.setAttribute("fill", fruitColor);
-        if (growth < 10) {fruit.setAttribute("display", "none");}
-        let randomX = Math.random() * 140 - 70;
+        if (growth < 10) {
+            fruit.setAttribute("display", "none");
+        } else {
+            fruit.setAttribute("display", "flex");
+        }
+        let randomX = -60  + ( i * 15 );
         fruit.setAttribute("cx", randomX);
-        let randomY = Math.random() * 140 - 70;
-        fruit.setAttribute("cy", -treeHeight + randomY);
+        let randomY = Math.random() * 120 - 60;
+        fruit.setAttribute("cy", -treeHeightfuzz + randomY);
         fruit.setAttribute("r", 10);
         fruit.setAttribute("class", "fruit");
-        treeElement.appendChild(fruit);
+        treeGroup.appendChild(fruit);
     }
     
-    // append tree to container
+    // Append the group to the tree element
+    treeElement.appendChild(treeGroup);
+
+    // Append tree to container
     treeContainer.appendChild(treeElement);
 }

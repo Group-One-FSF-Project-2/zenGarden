@@ -1,5 +1,18 @@
+#gardenView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    height: 70vh;
+    width: 100%;
+
+}
+
+/* create 3 "layer" to keep each plant type in order */
 #treeContainer {
     z-index: 1;
+    background-color: rgb(149, 205, 219);
 }
 
 #bushContainer {
@@ -15,6 +28,8 @@
     border-width: 1px;
     border-style: solid;
     position: absolute;
+    width: 80%;
+    height: 600px;
 }
 
 #button-container {
@@ -23,45 +38,53 @@
     align-items: flex-start;
 }
 
-.bush {
+[data-type="tree"] * {
     transition: all 1s;
 }
 
-.treeTop {
+[data-type="bush"] * {
     transition: all 1s;
-    animation: sway 5s ease-in-out infinite;
+    
 }
 
-.trunk {
-    transition: all 1s;
-}
-
-.flowerStem {
+[data-type="flower"] * {
     transition: all 1s;
 }
 
-.flowerPetal {
-    transition: all 1s;
+/* give movement to each plant type */
+.treeGroup {
+    animation: swayTree 10s ease-in-out  alternate infinite;
 }
 
-.flowerLeaf {
-    transition: all 1s;
+.bushGroup {
+    animation: swayBush 7.5s ease-in-out  alternate infinite;
 }
 
-.flowerCenter {
-    transition: all 1s;
+.flowerGroup {
+    animation: swayFlower 5s ease-in-out  alternate infinite;
 }
 
-.fruit {
+/* give motion to the bush fruit */
+.bushFruit1 {
+    animation: bushFruit1 1s ease-in-out  alternate infinite;
+}
+
+.bushFruit2 {
+    animation: bushFruit2 1s ease-in-out  alternate infinite;
+}
+
+/* target the tree fruit to be pickable */
+.treeGroup .fruit {
     pointer-events: auto;
 }
 
-.fruit:hover {
+.treeGroup .fruit:hover {
     animation: grow 0.5s forwards;
     transform-origin: center;
     transform-box: fill-box;
 }
 
+/* allow pointer events to the treeContainer */
 #bushContainer {
     pointer-events: none;
 }
@@ -79,27 +102,47 @@
     }
 }
 
-
-@keyframes sway {
+@keyframes swayTree {
     0% {
-        transform: rotate(0deg);
-    }
-    50% {
-        transform: rotate(.5deg);
+        transform: skewX(-2deg);
     }
     100% {
-        transform: rotate(0deg);
+        transform: skewX(2deg);
     }
 }
 
-/* @keyframes bush {
+@keyframes swayBush {
     0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.03);
+        transform: skewX(-3deg);
     }
     100% {
-        transform: scale(1);
+        transform: skewX(3deg);
     }
-} */
+}
+
+@keyframes swayFlower {
+    0% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes bushFruit1 {
+    0% {
+        transform: translateY(0) rotate(180deg);
+    }
+    100% {
+        transform: translateY(.5px) rotate(180deg);
+    }
+}
+
+@keyframes bushFruit2 {
+    0% {
+        transform: translatex(0) rotate(180deg);
+    }
+    100% {
+        transform: translatex(.5px) rotate(180deg);
+    }
+}

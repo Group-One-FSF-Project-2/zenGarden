@@ -1,14 +1,15 @@
-const bushY = bushContainer.clientHeight * 0.70;
+const bushY = bushContainer.clientHeight * 0.85;
 
 const addBush = (posX, bushID, createdOn, varietal) => {
 
     const bushElement = document.createElementNS(svgNS, "g");
-    // growth in days
-    if (createdOn > 10) {createdOn = 10;}
+    // growth in hours
+    if (createdOn > 5) {createdOn = 5;}
     const growth = createdOn;
 
     // set all bushs height based on container height
     const bushHeight = bushContainer.clientHeight * 0.2;
+
 
     // set bush and fruit color based on varietal
     let bushColor;
@@ -41,7 +42,13 @@ const addBush = (posX, bushID, createdOn, varietal) => {
     bushElement.setAttribute("data-growth", growth);
     bushElement.setAttribute("data-varietal", varietal);
 
+    // Create a group element to wrap the bush components
+    const bushGroup = document.createElementNS(svgNS, "g");
+    bushGroup.setAttribute("class", "bushGroup");
+
     // create bush
+    let bushHeightfuzz = bushHeight + Math.random() * 50 - 25;
+
     const bush = document.createElementNS(svgNS, "rect");
     bush.setAttribute("x", -20);
     bush.setAttribute("y", 0);
@@ -52,29 +59,39 @@ const addBush = (posX, bushID, createdOn, varietal) => {
     bush.setAttribute("rx", 30);
     bush.setAttribute("ry", 30);
     // center bush
-    bush.setAttribute("width", growth * 20);
-    bush.setAttribute("height", bushHeight );
+    bush.setAttribute("width", growth * 40);
+    bush.setAttribute("height", bushHeightfuzz );
     bush.setAttribute("class", "bush");
-    bushElement.appendChild(bush);
+    bush.setAttribute("transform", `rotate(180)`);
+    bushGroup.appendChild(bush);
 
 
-    // (TESTING) create 5 randomly placed fruit using rotate
-    // set fruit color to transparent when placement is set
+    // set fruit color to display:none until bush is fully grown
     for (let i = 0; i < 20; i++) {
         const fruit = document.createElementNS(svgNS, "circle");
         fruit.setAttribute("stroke", "black");
         fruit.setAttribute("stroke-width", 1);
         fruit.setAttribute("fill", fruitColor);
-        if (growth < 10) {fruit.setAttribute("display", "none");}
+        if (growth < 5) {
+            fruit.setAttribute("display", "none");
+        } else {
+            fruit.setAttribute("display", "flex");
+        }
         let randomX = -85  + ( i * 9 );
         fruit.setAttribute("cx", randomX);
         let randomY = Math.random() * 80 - 40;
-        fruit.setAttribute("cy", bushHeight /2 + randomY);
+        fruit.setAttribute("cy", bushHeightfuzz /2 + randomY);
         fruit.setAttribute("r", 5);
-        fruit.setAttribute("class", "fruit");
-        bushElement.appendChild(fruit);
+        // get a number between 1 and 3
+        let bushFruit = i % 3 + 1;
+        fruit.setAttribute("class", `fruit bushFruit${bushFruit}`);
+        fruit.setAttribute("transform", `rotate(180)`);
+        bushGroup.appendChild(fruit);
     }
     
-    // append bush to container
+    // Append the group to the bush element
+    bushElement.appendChild(bushGroup);
+
+    // Append bush to container
     bushContainer.appendChild(bushElement);
 }
