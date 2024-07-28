@@ -109,26 +109,26 @@
     <!-- <div class="login">zen garden logo -->
     <img src = "images/Untitled design.png" alt="Logo" class="logo"></div>
         
-        <ul>
+        {{!-- <ul>
           <li>
             <button id="modalLogin">Login</button>
           </li>
          </ul>  
-      </nav>
+      </nav> --}}
        
-      <div class="modal-container">
+      {{!-- <div class="modal-container">
         <div class="modal-content">
           <button id="closeModal" onclick="closeModalContainer()">Close</button>
           <form class="login">
-            <h2></h2>
-
+            <h2></h2> --}}
+             <h2>Login</h2>
              <div class="form-control">
-              <label for="email"><i class="fa fa-envelope"></i>Email</label>
-              <input type="email"  id="email" placeholder="Enter your email" required/>
+              <label for="usernamelogin"><i class="fa fa-envelope"></i>Username</label>
+              <input type="username"  id="userNameLogin" placeholder="Enter your username" required/>
              </div>
              <div class="form-control">
-              <label for="password"><i class="fa fa-lock"></i>Password</label>
-              <input type="password"  id="password" placeholder="Enter your password" required/>
+              <label for="passwordlogin"><i class="fa fa-lock"></i>Password</label>
+              <input type="password"  id="passwordLogin" placeholder="Enter your password" required/>
              </div>
              <div class="form-control-others">
               <div class="forget">
@@ -138,6 +138,7 @@
 
               </div>
              </div>
+            
                <div class="form-control-others">
                 <button>LOGIN</button>
                </div>
@@ -152,16 +153,16 @@
           <form class="registration">
             <h2>Registration</h2>
             <div class="form-control">
-              <label for="username"><i class="fa fa-user"></i>Username</label>
-              <input type="text"  id="username" placeholder="Enter your username"required/>
+              <label for="usernamesignup"><i class="fa fa-user"></i>Username</label>
+              <input type="text"  id="usernameSignUp" placeholder="Enter your username"required/>
              </div>
-             <div class="form-control">
+             {{!-- <div class="form-control">
               <label for="email"><i class="fa fa-envelope"></i>Email</label>
               <input type="email"  id="email" placeholder="Enter your email"required/>
-             </div>
+             </div> --}}
              <div class="form-control">
-              <label for="password"><i class="fa fa-lock"></i>Password</label>
-              <input type="password"  id="password" placeholder="Enter your password"required/>
+              <label for="passwordSignUp"><i class="fa fa-lock"></i>Password</label>
+              <input type="passwordsignup"  id="password" placeholder="Enter your password"required/>
              </div>
              <div class="form-control-others">
               <div class="terms">
@@ -176,7 +177,14 @@
                <div class="form-control-others">
                 <label for="create">
                   Already have account?
-                  <a href="javascript:void(0)" id="login">Login</a>
+                  <a href="javascript:void(0)" id="login">LOGIN</a>
+                   <div class="form-control-others">
+                    <label for="create">
+                  Sign out of account.
+                    <a href="javascript:void(0)" id="logout">LOGOUT</a>
+                    <div class="form-control-others"></div>
+                {{!-- <button>LOGOUT</button> --}}
+               </div>
                 </label>
                </div>
           </form>
