@@ -32,6 +32,18 @@ router.post('/', async (req, res) => {
 // updating or adding a new plant to gardenplot
 // MADE CHANGES TO THIS ROUTE TO INCLUDE THE plantId
 // Scott 28Jul,  TESTING TESTING TESTING
+router.get('/', async (req, res) => {
+  try { 
+    const plotPlant = await plotPlant.findAll( {
+      where: {
+        id: req.body.id
+      }
+    });
+    res.status(200).json(plotPlant);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post('/:id', async (req, res) => {
   console.log('req.body:', req.body);
