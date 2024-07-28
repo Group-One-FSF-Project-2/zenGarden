@@ -39,28 +39,7 @@
   <button type="submit" class="btn btn-primary">Plant</button>
 </form>
 
-<script>
-  document.getElementById('plantPosition').addEventListener('input', function() {
-    document.getElementById('positionLabel').innerText = this.value;
-  });
 
-  document.getElementById('addPlantForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    console.log(event);
-    let plantId = document.getElementById('varietal').value;
-    let location_x = document.getElementById('plantPosition').value;
-    let plotId = document.getElementById('addPlantForm').getAttribute('value');
-    console.log(plantId, location_x, plotId);
-
-
-    submitForm({
-      plotId: parseInt(plotId, 10),
-      plantId: parseInt(plantId, 10),
-      location_x: parseInt(location_x, 10)
-    });
-  });
-
-</script>
 
 
 <script src="/garden/form/form.js"></script>

@@ -1,6 +1,6 @@
 const bushY = bushContainer.clientHeight * 0.85;
 
-const addBush = (posX, bushID, createdOn, varietal) => {
+const addBush = (posX, createdOn, varietal) => {
   const bushElement = document.createElementNS(svgNS, "g");
   // growth in hours
   if (createdOn > 5) {
@@ -37,7 +37,6 @@ const addBush = (posX, bushID, createdOn, varietal) => {
   // set bush intitial pos, classes, and data attributes
   bushElement.setAttribute("transform", `translate(${posX}, ${bushY})`);
   bushElement.setAttribute("class", "plant");
-  bushElement.setAttribute("data-id", bushID);
   bushElement.setAttribute("data-type", "bush");
   bushElement.setAttribute("data-growth", growth);
   bushElement.setAttribute("data-varietal", varietal);

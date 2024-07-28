@@ -1,6 +1,6 @@
 const flowerY = flowerContainer.clientHeight * 0.9;
 
-const addFlower = (posX, flowerID, varietal) => {
+const addFlower = (posX, varietal) => {
   const flowerElement = document.createElementNS(svgNS, "g");
   // flowers will grow immediately
   const growth = 0;
@@ -39,7 +39,6 @@ const addFlower = (posX, flowerID, varietal) => {
   let flowerYfuzz = flowerY + Math.random() * 20 - 10;
   flowerElement.setAttribute("transform", `translate(${posX}, ${flowerYfuzz})`);
   flowerElement.setAttribute("class", "plant");
-  flowerElement.setAttribute("data-id", flowerID);
   flowerElement.setAttribute("data-type", "flower");
   flowerElement.setAttribute("data-varietal", varietal);
   flowerElement.setAttribute("data-growth", growth);
