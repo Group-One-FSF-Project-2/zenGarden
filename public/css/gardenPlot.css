@@ -1,148 +1,146 @@
 #gardenView {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    height: 70vh;
-    width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  height: 70vh;
+  width: 100%;
 }
 
 /* create 3 "layer" to keep each plant type in order */
 #treeContainer {
-    z-index: 1;
-    background-color: rgb(149, 205, 219);
+  z-index: 1;
+  background-color: rgb(149, 205, 219);
 }
 
 #bushContainer {
-    z-index: 2;
+  z-index: 2;
 }
 
 #flowerContainer {
-    z-index: 3;
+  z-index: 3;
 }
 
 .plantContainer {
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    position: absolute;
-    width: 80%;
-    height: 600px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  position: absolute;
+  width: 80%;
+  height: 600px;
 }
 
 #button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 [data-type="tree"] * {
-    transition: all 1s;
+  transition: all 1s;
 }
 
 [data-type="bush"] * {
-    transition: all 1s;
-    
+  transition: all 1s;
 }
 
 [data-type="flower"] * {
-    transition: all 1s;
+  transition: all 1s;
 }
 
 /* give movement to each plant type */
 .treeGroup {
-    animation: swayTree 10s ease-in-out  alternate infinite;
+  animation: swayTree 10s ease-in-out alternate infinite;
 }
 
 .bushGroup {
-    animation: swayBush 7.5s ease-in-out  alternate infinite;
+  animation: swayBush 7.5s ease-in-out alternate infinite;
 }
 
 .flowerGroup {
-    animation: swayFlower 5s ease-in-out  alternate infinite;
+  animation: swayFlower 5s ease-in-out alternate infinite;
 }
 
 /* give motion to the bush fruit */
 .bushFruit1 {
-    animation: bushFruit1 1s ease-in-out  alternate infinite;
+  animation: bushFruit1 1s ease-in-out alternate infinite;
 }
 
 .bushFruit2 {
-    animation: bushFruit2 1s ease-in-out  alternate infinite;
+  animation: bushFruit2 1s ease-in-out alternate infinite;
 }
 
 /* target the tree fruit to be pickable */
 .treeGroup .fruit {
-    pointer-events: auto;
+  pointer-events: auto;
 }
 
 .treeGroup .fruit:hover {
-    animation: grow 0.5s forwards;
-    transform-origin: center;
-    transform-box: fill-box;
+  animation: grow 0.5s forwards;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 /* allow pointer events to the treeContainer */
 #bushContainer {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 #flowerContainer {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 @keyframes grow {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.5);
-    }
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
 }
 
 @keyframes swayTree {
-    0% {
-        transform: skewX(-2deg);
-    }
-    100% {
-        transform: skewX(2deg);
-    }
+  0% {
+    transform: skewX(-2deg);
+  }
+  100% {
+    transform: skewX(2deg);
+  }
 }
 
 @keyframes swayBush {
-    0% {
-        transform: skewX(-3deg);
-    }
-    100% {
-        transform: skewX(3deg);
-    }
+  0% {
+    transform: skewX(-3deg);
+  }
+  100% {
+    transform: skewX(3deg);
+  }
 }
 
 @keyframes swayFlower {
-    0% {
-        transform: rotate(-5deg);
-    }
-    100% {
-        transform: rotate(5deg);
-    }
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
 }
 
 @keyframes bushFruit1 {
-    0% {
-        transform: translateY(0) rotate(180deg);
-    }
-    100% {
-        transform: translateY(.5px) rotate(180deg);
-    }
+  0% {
+    transform: translateY(0) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0.5px) rotate(180deg);
+  }
 }
 
 @keyframes bushFruit2 {
-    0% {
-        transform: translatex(0) rotate(180deg);
-    }
-    100% {
-        transform: translatex(.5px) rotate(180deg);
-    }
+  0% {
+    transform: translatex(0) rotate(180deg);
+  }
+  100% {
+    transform: translatex(0.5px) rotate(180deg);
+  }
 }
