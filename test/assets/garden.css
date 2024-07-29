@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Poppons:wght@300;400;500;600&display=swap"); */
+
 * {
     margin: 0;
     padding: 0;
@@ -16,18 +16,14 @@
 } 
 
 
-
-  /* still image */
-.still-photo {
-    display: flex;
-    justify-content: center;
-}
-
-body {
-    height:100vh ;
+body { 
     background: white;
-    /* padding: 20px;
-    color: #8ae90e; */
+    background-image: url("images/vecteezy_landscape-with-field-blue-sky-and-clouds-green-hill-park-or_29919103.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 650%;
+    padding-top: 45px;
+    padding-bottom: 50px;
+    background-attachment: scroll; 
 }
 
 #closeModal{
@@ -36,13 +32,16 @@ body {
     height: 15px;
 }
 nav {
-    position: relative;
+    position: static;
     height: 70px;
-    padding: 0 10%;
+    padding: 0 0%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: greenyellow;
+    margin: 0px;
+    margin-top: -45px;
+    margin-bottom: 35px;
 }
 
 nav ul{
