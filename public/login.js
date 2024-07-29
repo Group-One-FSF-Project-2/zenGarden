@@ -1,23 +1,52 @@
-const modalContainer = document.querySelector(".modal-container"); 
-const modalLogin = document.getElementById("modalLogin"); 
-const create = document.getElementById("create");
-const loginHere = document.getElementById("loginHere");
-const loginForm = document.querySelector(".login");
-const registrationForm = document.querySelector(".registration");
-const closeModal = document.getElementById("closeModal");
+// const modalContainer = document.querySelector(".modal-container"); 
+// const modalLogin = document.getElementById("modalLogin"); 
+// const create = document.getElementById("create");
+// const loginHere = document.getElementById("loginHere");
+// const loginForm = document.querySelector(".login");
+// const registrationForm = document.querySelector(".registration");
+// const closeModal = document.getElementById("closeModal");
 
 
-modalLogin.onclick = () => {
-    modalContainer.classList.add("open");
-};
+// modalLogin.onclick = () => {
+//     modalContainer.classList.add("open");
+// };
 
-closeModal.onclick = () => {
-    modalContainer.classList.remove("open");
-    registrationForm.style.transform = "translate(500px)";
-};
+// closeModal.onclick = () => {
+//     modalContainer.classList.remove("open");
+//     registrationForm.style.transform = "translate(500px)";
+// };
 
-create.onclick = () => {
-    loginForm.style.transform = "translate(-500px)";
-    registrationForm.style.transform = "translate(0)";
-}
+// create.onclick = () => {
+//     loginForm.style.transform = "translate(-500px)";
+//     registrationForm.style.transform = "translate(0)";
+// }
 
+
+// The two lines above automatically generated. I left them in because I am not sure if we need them as requirements.
+const loginHandler = async (event) => {
+    event.preventDefault();
+  
+    const user_name = document.querySelector('#usernameInputLogin').value.trim();
+    const password = document.querySelector('#passwordInputLogin').value.trim();
+    const submit = document.querySelector('#submitbtn');
+    //   change email to username and fix the submit, they aren't attacthed to anything
+    if (user_name && password) {
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ user_name, password }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.ok) {
+        document.location.replace('/');
+      } else {
+        console.error('Failed to Create New User');
+      }
+    }
+  };
+  // add attacthment to form by adding  document.queryselector('form') before the event listener
+  document.querySelector('.login').addEventListener('submit', loginHandler);
+  // Event listener
+  

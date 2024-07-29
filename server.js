@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars'); 
-const routes = require('./controllers');
 // const helpers = require('./utils/helpers'); //optional
 const controllers = require('./controllers');
 // initialize models for sequelize
@@ -45,7 +44,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use(routes);
+app.use(controllers);
+
 
 
 sequelize.sync({ force: false }).then(() => {
@@ -56,14 +56,8 @@ sequelize.sync({ force: false }).then(() => {
 });
 
 
-app.use(controllers);
 
-// TESTING WITH PARAMETERS - Scott 28Jul
-app.get('/', (req, res) => {
-  res.render('home', {
-    plotId: 3,
-    plot_name: 'My new garden',});
-});
+
 
   //This was just in the wrong place, need to be before
 // app.use(controllers);
