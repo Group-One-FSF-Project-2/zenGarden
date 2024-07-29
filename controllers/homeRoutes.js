@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 const router = require('express').Router();const { Gardenplot, User } = require('../models');
 const withAuth = require('../utils/auth');
+=======
+const router = require('express').Router();
+// const { Gardenplot, User } = require('../models');
+// const withAuth = require('../utils/auth');
+>>>>>>> 4043205de90eb6678d15199b3d29faea090dfc22
 
 
 // TESTING WITH PARAMETERS - Scott 28Jul
