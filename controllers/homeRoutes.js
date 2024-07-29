@@ -32,77 +32,82 @@ router.get('/plots/:id', (req, res) => {
 //   res.json('Hello World');
 // });
 
-router.get('/', async (req, res) => {
-  try {
-    const plotData = await Gardenplot.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['user_name'],
-        },
-      ],
-    });
+// router.get('/', async (req, res) => {
+//   try {
+//     const plotData = await Gardenplot.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['user_name'],
+//         },
+//       ],
+//     });
 
-    const plots = plotData.map((plot) => plot.get({ plain: true }));
+//     const plots = plotData.map((plot) => plot.get({ plain: true }));
 
-    res.render('allPlots', {
-      plots,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('allPlots', {
+//       plots,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-router.get('/plots/:id', withAuth, async (req, res) => {
-  try {
-    const plotData = await Gardenplot.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['user_name'],
-        },
-      ],
-    });
+// router.get('/plots/:id', withAuth, async (req, res) => {
+//   try {
+//     const plotData = await Gardenplot.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['user_name'],
+//         },
+//       ],
+//     });
 
-    const plot = plotData.get({ plain: true });
+//     const plot = plotData.get({ plain: true });
 
-    res.render('allPlots', {
-      ...plot,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('allPlots', {
+//       ...plot,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-router.get('/plots', withAuth, async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: {exclude: ['password'] },
-      include: [{ model: Gardenplot}],
-    });
+// router.get('/plots', withAuth, async (req, res) => {
+//   try {
+//     const userData = await User.findByPk(req.session.user_id, {
+//       attributes: {exclude: ['password'] },
+//       include: [{ model: Gardenplot}],
+//     });
 
-    const user = userData.get({ plain: true });
+//     const user = userData.get({ plain: true });
 
-    res.render('allPlots', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('allPlots', {
+//       ...user,
+//       logged_in: true
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/plots');
-    return;
-  }
+// router.get('/login', (req, res) => {
+//   if (req.session.logged_in) {
+//     res.redirect('/plots');
+//     return;
+//   }
 
+<<<<<<< HEAD
   res.render('home');
 
   res.json('Hello World');
 });
+=======
+//   res.render('home');
+// });
+>>>>>>> b138e6a93fe94629d3d7633805121477d5673b3e
 
 module.exports = router;
