@@ -1,5 +1,4 @@
-const router = require('express').Router();
-const { Gardenplot, User } = require('../models');
+const router = require('express').Router();const { Gardenplot, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -11,24 +10,24 @@ router.get('/', (req, res) => {
   });
 });
 
-// router.get('/plots', (req, res) => {
-//   res.render('allPlots');
-// });
+router.get('/plots', (req, res) => {
+  res.render('allPlots');
+});
 
 router.get('/plots/new', (req, res) => {
   res.render('newPlot');
 });
 
 
-// router.get('/plots/:id', (req, res) => {
-//   // we need to get the plot information from the database.
-//   res.render('singlePlot', {
-//     plotId: 3,
-//     plot_name: 'My new garden',
-//   });
-// });
+router.get('/plots/:id', (req, res) => {
+  // we need to get the plot information from the database.
+  res.render('singlePlot', {
+    plotId: 3,
+    plot_name: 'My new garden',
+  });
+});
 
-// // FOR TESTING  localhost:3001/garden
+// FOR TESTING  localhost:3001/garden
 // router.get('/garden', (req, res) => {
 //   res.json('Hello World');
 // });
@@ -102,6 +101,8 @@ router.get('/login', (req, res) => {
   }
 
   res.render('home');
+
+  res.json('Hello World');
 });
 
 module.exports = router;
