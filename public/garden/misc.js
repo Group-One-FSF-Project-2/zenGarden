@@ -1,70 +1,79 @@
-// miscellanous functions for the garden
+document.getElementById('fetchPlot').addEventListener('click', async function() {
+  // Hardcoding the id, will be chosen from form
+  const plotId = 3; // TESTING PURPOSES ONLY
+  console.log("fetching garden plot");
 
-//fetch call to add all plants to garden
+  try {
+    const response = await fetch("/api/gardenplots/test", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error('Fetch failed to get garden plot');
+    }
+
+    const gardenPlots = await response.json();
+    console.log(gardenPlots);
+    JSON.stringify(gardenPlots);
+    const matchingPlots = gardenPlots.filter((plot) => plot.plot_id === plotId);
+    console.log(matchingPlots);
+    if (matchingPlots) {
+      console.log(matchingPlots);
+      generateGarden(matchingPlots);
+    } else {
+      console.log('Plot not found');
+    }
+  } catch (error) {
+    console.error('Failed to fetch garden plot:', error);
+  }
+});
 
 
-// const fetchGarden = document.getElementById("fetchGarden");
-
-// // hardcoding the id, will be chosen from form
-// const plotId = 1; // TESTING PURPOSES ONLY
-// fetchGarden.addEventListener("click", async function () {
-//   const response = await fetch("/api/gardenplots", {
-//     method: "GET",
-//     headers: { "Content-Type": "application/json" },
-//   });
-//   const gardenPlots = await response.json();
-
-//   const choosePlot = gardenPlots.find((plot) => plot.id === plotId);
-
-//   if (choosePlot) {
-//     generateGarden(choosePlot);
-//   }
-// });
 
 // generate garden with choosePlot
 
 const generateGarden = (choosePlot) => {
   // get each plant from choosePlot and add using a switch statement
-  choosePlot.plants.forEach((plant) => {
-    let plantId = plant.plotPlant.id;
-    let plantVariety = plant.plotPlant.plant_id;
-    let locationX = plant.plotPlant.location_x;
-    let createdAt = plant.plotPlant.createdAt;
+  choosePlot.forEach((plant) => {
+    let plantVariety = plant.plant_id;
+    let locationX = plant.location_x;
+    let createdAt = plant.createdAt;
     // difference in hours
     let timeGrowth = Math.floor(
       (Date.now() - new Date(createdAt)) / 1000 / 60 / 60
     );
 
     console.log(plant);
-    console.log(plantId, plantVariety, locationX, timeGrowth);
+    console.log( plantVariety, locationX, timeGrowth);
 
     switch (plantVariety) {
       case 1:
-        addTree(locationX, plantId, timeGrowth, 1);
+        addTree(locationX, timeGrowth, 1);
         break;
       case 2:
-        addTree(locationX, plantId, timeGrowth, 2);
+        addTree(locationX, timeGrowth, 2);
         break;
       case 3:
-        addTree(locationX, plantId, timeGrowth, 3);
+        addTree(locationX, timeGrowth, 3);
         break;
       case 4:
-        addBush(locationX, plantId, timeGrowth, 4);
+        addBush(locationX, timeGrowth, 4);
         break;
       case 5:
-        addBush(locationX, plantId, timeGrowth, 5);
+        addBush(locationX, timeGrowth, 5);
         break;
       case 6:
-        addBush(locationX, plantId, timeGrowth, 6);
+        addBush(locationX, timeGrowth, 6);
         break;
       case 7:
-        addFlower(locationX, plantId, 7);
+        addFlower(locationX, 7);
         break;
       case 8:
-        addFlower(locationX, plantId, 8);
+        addFlower(locationX, 8);
         break;
       case 9:
-        addFlower(locationX, plantId, 9);
+        addFlower(locationX, 9);
         break;
       default:
     }

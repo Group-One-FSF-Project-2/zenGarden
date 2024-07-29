@@ -3,8 +3,8 @@ const treeY = treeContainer.clientHeight * 0.8;
 const addTree = (posX, createdOn, varietal) => {
   const treeElement = document.createElementNS(svgNS, "g");
   // growth in hours
-  if (createdOn > 10) {
-    createdOn = 10;
+  if (createdOn > 20) {
+    createdOn = 20;
   }
 
   const growth = createdOn;
@@ -62,8 +62,8 @@ const addTree = (posX, createdOn, varietal) => {
   trunk.setAttribute("stroke-width", 1);
   trunk.setAttribute("fill", trunkColor);
   // center trunk
-  trunk.setAttribute("width", growth * 4);
-  trunk.setAttribute("x", -(growth * 2));
+  trunk.setAttribute("width", growth * 2);
+  trunk.setAttribute("x", -(growth * 1));
   trunk.setAttribute("height", treeHeightfuzz);
   trunk.setAttribute("class", "trunk");
   treeGroup.appendChild(trunk);
@@ -75,7 +75,7 @@ const addTree = (posX, createdOn, varietal) => {
   circle.setAttribute("fill", topColor);
   circle.setAttribute("cx", 0);
   circle.setAttribute("cy", -treeHeightfuzz);
-  circle.setAttribute("r", growth * 10);
+  circle.setAttribute("r", growth * 5);
   circle.setAttribute("class", "treeTop");
   treeGroup.appendChild(circle);
 
@@ -85,7 +85,7 @@ const addTree = (posX, createdOn, varietal) => {
     fruit.setAttribute("stroke", "black");
     fruit.setAttribute("stroke-width", 1);
     fruit.setAttribute("fill", fruitColor);
-    if (growth < 10) {
+    if (growth < 18) {
       fruit.setAttribute("display", "none");
     } else {
       fruit.setAttribute("display", "flex");

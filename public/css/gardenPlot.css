@@ -38,15 +38,15 @@
 }
 
 [data-type="tree"] * {
-  transition: all 1s;
+  transition: all 5s;
 }
 
 [data-type="bush"] * {
-  transition: all 1s;
+  transition: all 5s;
 }
 
 [data-type="flower"] * {
-  transition: all 1s;
+  transition: all 5s;
 }
 
 /* give movement to each plant type */

@@ -5,7 +5,7 @@ const growBush = () => {
     // set the updated growth value
     let growth = bush.getAttribute("data-growth");
 
-    if (growth > 4) {
+    if (growth > 8) {
       // show fruit if bush is fully grown
       const bushFruit = bush.querySelectorAll(".fruit");
       bushFruit.forEach((fruit) => {
@@ -21,7 +21,7 @@ const growBush = () => {
 
     const bushWidth = bush.querySelector(".bush");
 
-    bushWidth.setAttribute("width", growth * 40);
-    bushWidth.setAttribute("x", -growth * 20);
+    bushWidth.setAttribute("width", growth * 20);
+    bushWidth.setAttribute("x", -growth * 10);
   });
 };
