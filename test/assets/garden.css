@@ -15,12 +15,12 @@
     width: 250px;
 } 
 
+
+
   /* still image */
-.background {
-    position: relative;
-    height: auto;
-    left: 200px;
-    width: 950px;  
+.still-photo {
+    display: flex;
+    justify-content: center;
 }
 
 body {
@@ -109,7 +109,7 @@ button:focus{
 
  /* style the form modal */
  .modal-container{
-display: none; 
+    display: none; 
     opacity: 0; 
     position: absolute;
     top: 0;
@@ -121,11 +121,12 @@ display: none;
     justify-content: center;
     background:rgba(77, 77, 77, 0.7);
     transition: all 0.4s;
+    visibility: hidden;
  }
 
  .open{
-    display:block;
-     opacity: 4; 
+     opacity: 1; 
+     visibility: visible;
  }
  /* .hidden {
     display:none
