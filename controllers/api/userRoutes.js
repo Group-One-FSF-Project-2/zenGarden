@@ -4,10 +4,8 @@ const { User, Gardenplot, plotPlant } = require('../../models');
 //POST create new user
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+    const userData = await User.create(req.body);
+    
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
