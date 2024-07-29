@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-const router = require('express').Router();const { Gardenplot, User } = require('../models');
-const withAuth = require('../utils/auth');
-=======
 const router = require('express').Router();
-// const { Gardenplot, User } = require('../models');
-// const withAuth = require('../utils/auth');
->>>>>>> 4043205de90eb6678d15199b3d29faea090dfc22
-
+const { Gardenplot, User } = require('../models');
 
 // TESTING WITH PARAMETERS - Scott 28Jul
 router.get('/', (req, res) => {
@@ -106,14 +99,7 @@ router.get('/plots/:id', (req, res) => {
 //     return;
 //   }
 
-<<<<<<< HEAD
-  res.render('home');
-
-  res.json('Hello World');
-});
-=======
 //   res.render('home');
 // });
->>>>>>> b138e6a93fe94629d3d7633805121477d5673b3e
 
 module.exports = router;
