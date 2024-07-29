@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
 
 // TESTING WITH PARAMETERS - Scott 28Jul
 router.get('/', (req, res) => {
