@@ -13,6 +13,7 @@ modalLogin.onclick = () => {
 
 closeModal.onclick = () => {
     modalContainer.classList.remove("open");
+    registrationForm.style.transform = "translate(500px)";
 };
 
 create.onclick = () => {
