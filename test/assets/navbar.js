@@ -20,5 +20,3 @@ create.onclick = () => {
     loginForm.style.transform = "translate(-500px)";
     registrationForm.style.transform = "translate(0)";
 }
-
-
