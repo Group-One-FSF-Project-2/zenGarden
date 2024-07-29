@@ -49,7 +49,7 @@ const addBush = (posX, createdOn, varietal) => {
   let bushHeightfuzz = bushHeight + Math.random() * 50 - 25;
 
   const bush = document.createElementNS(svgNS, "rect");
-  bush.setAttribute("x", -20);
+  bush.setAttribute("x", -growth * 10);
   bush.setAttribute("y", 0);
   bush.setAttribute("stroke", "black");
   bush.setAttribute("stroke-width", 1);
@@ -58,7 +58,7 @@ const addBush = (posX, createdOn, varietal) => {
   bush.setAttribute("rx", 30);
   bush.setAttribute("ry", 30);
   // center bush
-  bush.setAttribute("width", growth * 40);
+  bush.setAttribute("width", growth * 20);
   bush.setAttribute("height", bushHeightfuzz);
   bush.setAttribute("class", "bush");
   bush.setAttribute("transform", `rotate(180)`);
@@ -70,7 +70,7 @@ const addBush = (posX, createdOn, varietal) => {
     fruit.setAttribute("stroke", "black");
     fruit.setAttribute("stroke-width", 1);
     fruit.setAttribute("fill", fruitColor);
-    if (growth < 5) {
+    if (growth < 8) {
       fruit.setAttribute("display", "none");
     } else {
       fruit.setAttribute("display", "flex");
