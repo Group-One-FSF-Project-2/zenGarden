@@ -2,10 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars'); 
-// const helpers = require('./utils/helpers'); //optional
 const controllers = require('./controllers');
-// initialize models for sequelize
-// const model = require('./models/index');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
@@ -34,19 +31,11 @@ app.engine('handlebars', hbs.engine);
 //app.engine('handlebars', exphbs.create());
 app.set('view engine', 'handlebars');
 
-// app.engine('handlebars', hbs.engine);
-// app.engine('handlebars', exphbs());
-// app.set('view engine', 'handlebars');
-
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use(controllers);
-
-
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => 
@@ -55,21 +44,3 @@ sequelize.sync({ force: false }).then(() => {
   )
 });
 
-
-
-
-
-  //This was just in the wrong place, need to be before
-// app.use(controllers);
-
-// app.get('/', (req, res) => {
-//   res.render('home');
-// });
-
-// this was called twice so i just removed one
-// sequelize.sync({force: false}).then(() => {
-//     app.listen(PORT, () => {
-//         console.log('server started on http://localhost:' + PORT);
-//     });
-
-// });
