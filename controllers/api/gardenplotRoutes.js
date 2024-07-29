@@ -31,12 +31,29 @@ router.post('/', async (req, res) => {
 
 // updating or adding a new plant to gardenplot
 
-router.put('/:id', async (req, res) => {
-  const plotId = parseInt(req.params.id);
+router.get('/test', async (req, res) => {
+  try { 
+    
+    const plotPlants = await plotPlant.findAll();
+
+    // map over the plotPlants and return the data that matches plotId = 1
+    const plotPlantsFiltered = plotPlants.filter(plant => plant.plotId === 1);
+    
+    console.log('plotPlantsFiltered:', plotPlantsFiltered);
+    
+    res.status(200).json(plotPlantsFiltered);
+  } catch (err) {
+    console.error('Error fetching plot plants:', err);
+    res.status(500).json({ error: 'Internal Server Error', details: err.message });
+  }
+});
+
+router.post('/:id', async (req, res) => {
+  console.log('req.body:', req.body);
+
   try {
       const newPlant = await plotPlant.create({
-      ...req.body,
-      plot_id: plotId,     
+      ...req.body
     });
     res.status(200).json(newPlant);
   } catch (err) {

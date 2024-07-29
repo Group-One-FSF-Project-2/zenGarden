@@ -20,10 +20,7 @@ plotPlant.init(
         },
         plantId: {
             type: DataTypes.INTEGER,
-            references: {
-                model:'plant',
-                key:'id',
-            },
+            allowNull: false,
         },
         location_x: {
             type: DataTypes.INTEGER,

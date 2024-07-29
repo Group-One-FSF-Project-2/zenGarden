@@ -2,19 +2,55 @@
     {
         "plotId": 1,
         "plantId": 1,
-        "location_x": 2,
+        "location_x": 100,
         "location_y": 3
     },
     {
         "plotId": 1,
         "plantId": 2,
-        "location_x": 3,
+        "location_x": 200,
         "location_y": 2
     },
     {
-        "plotId": 3,
-        "plantId": 1,
-        "location_x": 2,
+        "plotId": 1,
+        "plantId": 3,
+        "location_x": 300,
+        "location_y": 1
+    },
+    {
+        "plotId": 1,
+        "plantId": 4,
+        "location_x": 100,
+        "location_y": 3
+    },
+    {
+        "plotId": 1,
+        "plantId": 5,
+        "location_x": 200,
+        "location_y": 2
+    },
+    {
+        "plotId": 1,
+        "plantId": 6,
+        "location_x": 300,
+        "location_y": 1
+    },
+    {
+        "plotId": 1,
+        "plantId": 7,
+        "location_x": 100,
+        "location_y": 3
+    },
+    {
+        "plotId": 1,
+        "plantId": 8,
+        "location_x": 200,
+        "location_y": 2
+    },
+    {
+        "plotId": 1,
+        "plantId": 9,
+        "location_x": 300,
         "location_y": 1
     }
 ]
