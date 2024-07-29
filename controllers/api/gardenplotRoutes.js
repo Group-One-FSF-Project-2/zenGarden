@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { Gardenplot, plotPlant, Plant } = require('../../models');
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     // pull all available plots and plants 
     const gardenPlots = await Gardenplot.findAll( {
@@ -18,7 +18,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // set post to pass in the user info & create the garden plot for the correct user
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newPlot = await Gardenplot.create({
       ...req.body,
@@ -56,7 +56,7 @@ router.post('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const plotData = await Gardenplot.destroy({
       where: {

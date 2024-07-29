@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Gardenplot, User } = require('../models');
-const withAuth = require('../utils/auth');
+// const { Gardenplot, User } = require('../models');
+// const withAuth = require('../utils/auth');
 
 
 // TESTING WITH PARAMETERS - Scott 28Jul
