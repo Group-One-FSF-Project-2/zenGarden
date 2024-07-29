@@ -34,15 +34,9 @@ router.post('/', async (req, res) => {
 // Scott 28Jul,  TESTING TESTING TESTING
 router.get('/test', async (req, res) => {
   try { 
-    
     const plotPlants = await plotPlant.findAll();
-
-    // map over the plotPlants and return the data that matches plotId = 1
-    const plotPlantsFiltered = plotPlants.filter(plant => plant.plotId === 1);
     
-    console.log('plotPlantsFiltered:', plotPlantsFiltered);
-    
-    res.status(200).json(plotPlantsFiltered);
+    res.status(200).json(plotPlants);
   } catch (err) {
     console.error('Error fetching plot plants:', err);
     res.status(500).json({ error: 'Internal Server Error', details: err.message });
