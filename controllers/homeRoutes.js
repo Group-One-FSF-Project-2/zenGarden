@@ -1,7 +1,5 @@
 const router = require('express').Router();
-// const { Gardenplot, User } = require('../models');
-// const withAuth = require('../utils/auth');
-
+const { Gardenplot, User } = require('../models');
 
 // TESTING WITH PARAMETERS - Scott 28Jul
 router.get('/', (req, res) => {
@@ -28,7 +26,7 @@ router.get('/plots/:id', (req, res) => {
   });
 });
 
-// // FOR TESTING  localhost:3001/garden
+// FOR TESTING  localhost:3001/garden
 // router.get('/garden', (req, res) => {
 //   res.json('Hello World');
 // });
