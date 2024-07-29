@@ -29,8 +29,6 @@ document.getElementById('fetchPlot').addEventListener('click', async function() 
   }
 });
 
-
-
 // generate garden with choosePlot
 
 const generateGarden = (choosePlot) => {
