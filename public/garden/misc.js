@@ -1,6 +1,6 @@
 document.getElementById('fetchPlot').addEventListener('click', async function() {
-  // Hardcoding the id, will be chosen from form
-  const plotId = 3; // TESTING PURPOSES ONLY
+
+  const plotId = document.getElementById('addPlantForm').getAttribute('value');
   console.log("fetching garden plot");
 
   try {
