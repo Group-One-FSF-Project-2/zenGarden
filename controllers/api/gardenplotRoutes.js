@@ -50,7 +50,7 @@ router.post('/:id', async (req, res) => {
       const newPlant = await plotPlant.create({
       ...req.body
     });
-    res.status(200).json(newPlant);
+    res.status(200).json({message: "plot plant created successfully"}, newPlant);
   } catch (err) {
     res.status(400).json(err);
   }
