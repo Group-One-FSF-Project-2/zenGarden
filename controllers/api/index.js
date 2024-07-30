@@ -8,6 +8,7 @@ router.use('/users', userRoutes);
 router.use('/gardenplots', gardenplotRoutes);
 router.use('/plants', plantRoutes)
 
+// /api/gardenplots
 
 
 module.exports = router;
