@@ -4,13 +4,23 @@ let posX;
 // Add Tree
 const addTreeBtn = document.getElementById("addTree");
 
-addTreeBtn.addEventListener("click", function () {
+addTreeBtn.addEventListener("click", function ( plotId, plantId) {
   posX = Math.random() * treeContainer.clientWidth;
   // hardcoded growth time for testing
   let growthFromDb = 0;
   //fetch call to add tree to garden
+fetch(`/api/gardenplots/${plotId}`,{
 
-  // parameters: posX, treeID, createdOn, varietal
+  method: "POST",
+  headers: { 'Content-Type': 'application/json', }, 
+  body: JSON.stringify({ plantId: plantId })
+
+}).then( response => response.json())
+console.log("running")
+.then( data => {console.log("success", data)}) 
+.catch(error => {
+  console.log("error", error)
+}) // parameters: posX, treeID, createdOn, varietal
   addTree(posX, 1, growthFromDb, 2);
 });
 
