@@ -28,7 +28,7 @@ const withAuth = require('../utils/auth');
 //   });
 // });
 
-// // FOR TESTING  localhost:3001/garden
+// FOR TESTING  localhost:3001/garden
 // router.get('/garden', (req, res) => {
 //   res.json('Hello World');
 // });
