@@ -6,6 +6,8 @@
 // const registrationForm = document.querySelector(".registration");
 // const closeModal = document.getElementById("closeModal");
 
+// const app = require('../.server.js');
+
 
 // modalLogin.onclick = () => {
 //     modalContainer.classList.add("open");
@@ -40,9 +42,42 @@ const loginHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/');
-      } else {
-        console.error('Failed to Create New User');
+        
+        const data = await response.json();
+        const userId = data.user;
+        console.log('User ID in login JS:', userId);
+
+        // check if the user has a garden plot, if not create one
+        // const createPlot = await fetch('/api/gardenplots', {
+        //   method: 'POST',
+        //   body: JSON.stringify({ user_id: userId, plot_name: `${userId} Garden Plot` }),
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        // });
+        // if (createPlot.ok) {
+        //   console.log(createPlot);
+        //   console.log('Garden Plot Created' + createPlot.user + createPlot.plotData);
+        // } else {
+        //   console.error('Failed to Create Garden Plot');
+        // }
+        
+        // redirect to the garden page using the user id and plot id, using handlebars
+        console.log('plotData:', data.plotData);  
+
+        const plotId = data.plotData;
+        console.log('Plot ID:', plotId);
+
+        localStorage.setItem('plotId', plotId);
+
+        window.location.href = `api/gardenplots/singlePlot?plotId=${plotId}`;
+
+
+
+
+        
+     } else {
+        console.error('Failed to Create New User');   
       }
     }
   };

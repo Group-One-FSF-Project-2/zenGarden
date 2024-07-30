@@ -1,6 +1,6 @@
-<h1>{{plot_name}}</h1>
+<form id="addPlantForm">
 
-<form id="addPlantForm" value={{plotId}}>
+  <input type="hidden" id="plotIdFromLogin" value="{{plotId}}">
 
   <fieldset class="form-group m-2">
     <div class="form-group">
@@ -17,7 +17,7 @@
         <option value="9">Aster</option>
       </select>
     </div>
-  </fieldset>
+  </fieldset> 
 
   <fieldset class="form-group m-2">
     <div class="form-group">
@@ -56,8 +56,9 @@
   >Fetch</button>
 </form>
 
-<script src="/garden/form/form.js"></script>
+
 <script src="/garden/addPlant/addTree.js"></script>
 <script src="/garden/addPlant/addBush.js"></script>
 <script src="/garden/addPlant/addFlower.js"></script>
+<script src="/garden/form/form.js"></script>
 <script src="/garden/misc.js"></script>

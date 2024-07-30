@@ -11,7 +11,10 @@
 /* create 3 "layer" to keep each plant type in order */
 #treeContainer {
   z-index: 1;
-  background-color: rgb(149, 205, 219);
+  background-image: url('/images/bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #bushContainer {

@@ -11,7 +11,11 @@ document.getElementById('addPlantForm').addEventListener('submit', function(even
   console.log(event);
   let plantId = document.getElementById('varietal').value;
   let location_x = document.getElementById('plantPosition').value;
-  let plotId = document.getElementById('addPlantForm').getAttribute('value');
+  let plotId = document.getElementById('plotIdFromLogin').value;
+
+  console.log('Plot:', plotId);
+  
+  plotId = localStorage.getItem('plotId');
   console.log(plantId, location_x, plotId);
 
 
@@ -25,34 +29,29 @@ document.getElementById('addPlantForm').addEventListener('submit', function(even
 
 const submitForm = async (plotPlantData) => {
     console.log('Form data:', plotPlantData);
-    const plotId = parseInt(plotPlantData.plot_id, 10);
+    let plotId = parseInt(plotPlantData.plot_id, 10);
     const plantId = parseInt(plotPlantData.plant_id, 10);  
     console.log('Plant:', plantId);
     
+    plotId = localStorage.getItem('plotId');
+    console.log('Plot ID storage:', plotId);
+
     try {
       const response = await fetch(`/api/gardenplots/${plotId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(plotPlantData)
       });
-    
+      console.log('Response:', response.ok);
       if (response.ok) {
         const responseData = await response.json();
-        console.log('Plant added to garden:', responseData);
-        const resPlantId = responseData.plant_id;
-        console.log('Plant id:', resPlantId);
-    
-        let { location_x, createdAt, plant_id } = responseData;
-        // how old is the plant in hours
-        createdAt = new Date(createdAt);
-        const timeGrowth = Math.floor((Date.now() - createdAt) / 1000 / 60 / 60);
+        let { location_x, plant_id } = responseData.newPlant;
+        let timeGrowth = 0;
 
         switch (plant_id) {
           case 1:
           case 2:
           case 3:
-
-            console.log('Adding plant:', plantId, ' to plot:', plotId, ' at location:', location_x);
             addTree(location_x, timeGrowth, plant_id);
             growTree();
             growTree();
@@ -60,8 +59,6 @@ const submitForm = async (plotPlantData) => {
           case 4:
           case 5:
           case 6:
-            // getting tree first
-            console.log('Adding plant:', plantId, ' to plot:', plotId);
             addBush(location_x, timeGrowth, plant_id);
             growBush();
             break;

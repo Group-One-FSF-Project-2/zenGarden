@@ -37,10 +37,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(controllers);
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => 
     console.log(`Server started on ${PORT}.`)
- 
-  )
+  
+  ) 
 });
 
