@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { Gardenplot, User } = require('../models');
 
 // TESTING WITH PARAMETERS - Scott 28Jul
 router.get('/', (req, res) => {
