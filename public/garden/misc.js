@@ -1,7 +1,8 @@
 document.getElementById('fetchPlot').addEventListener('click', async function() {
 
-  const plotId = document.getElementById('addPlantForm').getAttribute('value');
-  console.log("fetching garden plot");
+  let plotId = localStorage.getItem('plotId');
+  plotId = parseInt(plotId, 10);
+  console.log("fetching garden plot" + plotId);
 
   try {
     const response = await fetch("/api/gardenplots/test", {
