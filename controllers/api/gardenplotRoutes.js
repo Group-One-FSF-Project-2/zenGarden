@@ -60,7 +60,7 @@ router.post('/:id', async (req, res) => {
       error: err.message || 'An error occurred while creating the plot plant'
     });
   } 
-}); 
+});  
 
 router.delete('/:id', async (req, res) => {
   try {
@@ -69,7 +69,7 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id,
           user_id: req.session.user_id,
       },
-    });
+    }); 
 
     if (!plotData) {
       res.status(404).json({ message: 'No plot found!' });
