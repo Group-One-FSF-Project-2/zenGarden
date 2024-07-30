@@ -47,14 +47,20 @@ router.post('/:id', async (req, res) => {
   console.log('req.body:', req.body);
 
   try {
-      const newPlant = await plotPlant.create({
+    const newPlant = await plotPlant.create({
       ...req.body
+    }); 
+    res.status(200).json({
+      message: "plot plant created successfully",
+      newPlant: newPlant
     });
-    res.status(200).json(newPlant);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+  } catch (err) {  
+    console.error('Error creating plot plant:', err);
+    res.status(400).json({
+      error: err.message || 'An error occurred while creating the plot plant'
+    });
+  } 
+});  
 
 router.delete('/:id', async (req, res) => {
   try {
@@ -63,7 +69,7 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id,
           user_id: req.session.user_id,
       },
-    });
+    }); 
 
     if (!plotData) {
       res.status(404).json({ message: 'No plot found!' });
@@ -75,5 +81,20 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/singlePlot', async (req, res) => {
+  let plotId = req.query.plotId;
+  plotId = parseInt(plotId, 10);
+  console.log('Received Plot ID:', plotId);
+  const plotData = [{
+    "plotId": plotId
+  }];
+  console.log('Plot Data:', plotData);
+  //store the plotId to local storage 
+  
+
+  res.render('singlePlot', { plotData });
+});
+
 
 module.exports = router;

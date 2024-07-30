@@ -40,7 +40,7 @@ app.use(controllers);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => 
     console.log(`Server started on ${PORT}.`)
- 
-  )
+  
+  ) 
 });
 

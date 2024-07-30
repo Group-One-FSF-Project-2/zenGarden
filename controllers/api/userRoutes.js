@@ -38,11 +38,32 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
+    req.session.save( async () => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      console.log('User ID:', userData.id);
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      try {
+        const gardenPlot = await Gardenplot.findOne({ where: { user_id: userData.id } });
+        if (gardenPlot) {
+          res.json({ user: userData.id, plotData: gardenPlot.id });
+        } else {
+          // 
+          const createPlot = await Gardenplot.create({
+            user_id: userData.id,
+            plot_name: `${userData.user_name} Garden Plot`
+          });
+
+          res.json({ user: userData.id, plotData: createPlot.id });
+        }
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+      }
+
+      // res.json({ user: userData.id, message: 'You are now logged in!' });
+
+
     });
 
   } catch (err) {
