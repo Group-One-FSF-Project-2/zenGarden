@@ -40,8 +40,31 @@ const loginHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/');
-      } else {
+        
+        const data = await response.json();
+        const userId = data.user;
+        console.log('User ID in login JS:', userId);
+
+        // check if the user has a garden plot, if not create one
+        const createPlot = await fetch('/api/gardenplots', {
+          method: 'POST',
+          body: JSON.stringify({ user_id: userId, plot_name: `${userId} Garden Plot` }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (createPlot.ok) {
+          console.log('Garden Plot Created');
+        } else {
+          console.error('Failed to Create Garden Plot');
+        }
+        
+
+
+
+
+        
+     } else {
         console.error('Failed to Create New User');
       }
     }
