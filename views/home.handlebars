@@ -1,7 +1,17 @@
 
-<h1>this is the homepage</h1>
-
-<a  class="btn" href="/plots">click here to check out your plots</a>
-
-
+<main class="homepage">
+  {{#if logged_in}}
+  <section class="welcome">
+    <h1>Welcome to Your Garden</h1>
+    <p>Your plants are waiting for you.</p>
+    <a href="/plots" class="garden-link">🌱 View My Garden</a>
+  </section>
+  {{else}}
+  <section class="welcome">
+    <h1>ZenGarden</h1>
+    <p>A simple garden planning tool.</p>
+    <p>Create an account to start placing plants in your garden.</p>
+  </section>
+  {{/if}}
+</main>
 

@@ -1,34 +1,96 @@
-# zenGarden
+# 🌱 ZenGarden - Garden Planner
 
-This is our zen garden project for our software development bootcamp. 
+A simple web application for placing plants in a virtual garden with persistent storage.
 
-# zenGarden
+## 🎯 What It Does
 
-ZenGarden is a project we created to display our knowledge of creating a full stack application. We were asked to create an application using MVC Architecture that would allow us to input data to a UI interface and then store that data in a database. 
-## Installation
+ZenGarden lets you:
+- Create a personal garden plot
+- Choose from trees, bushes, or flowers
+- Place plants at different positions in your garden
+- Save your garden layout (plants persist between sessions)
 
-Among the technologies and packages we used included:
--sequelize, node, express-handlebars, nodemon, dotenv, pg, bcrypt, express-sessions, connect- sessions-sequelize, HTML, CSS and JavaScript.
+## 🚀 Live Demo
 
-To install our program you will run npm i to install the packages and dependencies.
-To run the seed data the command npm run seed will be used.
-To run the nodemon server the command npm run watch will be used.
+**[View Live Application](#)** *(Link coming after deployment)*
 
-## Usage
+![ZenGarden Screenshot](./docs/screenshot.png) *(Screenshot coming soon)*
 
-This application will allow the user to register, login and logout to a UI that can generate a garden individual garden plot with a selection of various plants and store that data so they can retrieve their garden and add new plant data to it.
+## 🛠️ Tech Stack
 
-## Contributing
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework with MVC architecture
+- **Sequelize ORM** - Database management
+- **PostgreSQL** - Primary database
+- **bcrypt** - Password encryption
+- **express-session** - User session management
 
-Contributors to this project include:
--1. Crystal Lisi
--2. Mike Jurek
--3 Miranda Delapaz
--4. Scott Okamoto
--5. Samuel Wlodawski
+### Frontend  
+- **Handlebars.js** - Server-side templating
+- **Bootstrap 5** - Responsive UI framework
+- **JavaScript** - Plant rendering and form handling
 
-Please make sure to update tests as appropriate.
+## 📦 Installation & Setup
 
-## License
+### Prerequisites
+- Node.js (v14 or higher)
+- PostgreSQL database
+- Git
 
-We employed no license in this project.
+### Quick Start
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd zenGarden
+
+# Install dependencies  
+npm install
+
+# Create PostgreSQL database
+createdb garden_db
+
+# Set up environment variables (see .env.example)
+cp .env.example .env
+# Edit .env with your database credentials
+
+# Seed the database
+npm run seed
+
+# Start development server
+npm run watch
+
+# Visit http://localhost:3001
+```
+
+## 🎮 Features
+
+- **User Accounts** - Sign up and log in to save your work
+- **Plant Selection** - Choose from 9 plant varieties across 3 categories
+- **Garden Layout** - Position plants using a simple slider interface
+- **Persistent Storage** - Your garden is automatically saved
+
+### Plant Types Available
+- **Trees**: Apple, Orange, Plum
+- **Bushes**: Blueberry, Red Currants, Gooseberry  
+- **Flowers**: Daisy, Cosmos, Aster
+
+## 🏗️ Architecture
+
+Built with MVC (Model-View-Controller) architecture:
+- **Models**: User, Garden Plot, Plant, and association tables
+- **Views**: Handlebars templates with responsive Bootstrap UI
+- **Controllers**: RESTful API routes and authentication middleware
+
+## 👥 Development Team
+
+This application was collaboratively built by:
+- Crystal Lisi
+- Mike Jurek  
+- Miranda Delapaz
+- Scott Okamoto
+- Samuel Wlodawski
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).

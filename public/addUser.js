@@ -1,11 +1,13 @@
-// The two lines above automatically generated. I left them in because I am not sure if we need them as requirements.
+/**
+ * User registration handler
+ * Creates new user account and redirects to home page
+ */
 const addUserHandler = async (event) => {
   event.preventDefault();
 
   const user_name = document.querySelector('#usernameInput').value.trim();
   const password = document.querySelector('#passwordInput').value.trim();
-  const submit = document.querySelector('#submitbtn');
-  //   change email to username and fix the submit, they aren't attacthed to anything
+
   if (user_name && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
@@ -18,10 +20,29 @@ const addUserHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      console.error('Failed to Create New User');
+      const errorData = await response.json();
+      console.error('Failed to create new user:', errorData);
+      
+      // Check for validation errors
+      if (errorData.name === 'SequelizeValidationError') {
+        const validationMessages = errorData.errors.map(error => {
+          if (error.path === 'password' && error.validatorKey === 'len') {
+            return 'Password must be at least 8 characters long.';
+          }
+          return error.message || 'Validation error';
+        });
+        alert('Registration failed:\n' + validationMessages.join('\n'));
+      }
+      // Check if username already exists
+      else if (errorData.name === 'SequelizeUniqueConstraintError' || 
+          (errorData.parent && errorData.parent.code === '23505')) {
+        alert('Username already exists. Please choose a different username.');
+      } else {
+        alert('Registration failed. Please try again.');
+      }
     }
   }
 };
-// add attacthment to form by adding  document.queryselector('form') before the event listener
-document.querySelector('.registration').addEventListener('submit', addUserHandler);
-// Event listener
+
+// Attach registration form handler
+document.querySelector('.registration-form').addEventListener('submit', addUserHandler);

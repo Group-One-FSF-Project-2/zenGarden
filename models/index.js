@@ -3,22 +3,6 @@ const Plant = require('./Plant');
 const User = require('./User');
 const plotPlant = require('./plotPlant');
 
-
-// User.belongsToMany(Gardenplot, {
-//     through: { 
-//         model: Gardenplot,
-//         unique: false
-//     }
-// });
-
-// Plant.belongsTo(Gardenplot, {
-//     through: { 
-//         model: Gardenplot,
-//         unique: false
-//     }
-// }
-// )
-
 //User has many gardenplots
 User.hasMany(Gardenplot, {
     foreignKey: 'user_id',

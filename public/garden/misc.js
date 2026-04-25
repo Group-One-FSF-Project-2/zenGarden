@@ -1,99 +1,75 @@
-document.getElementById('fetchPlot').addEventListener('click', async function() {
+// Clear all plants from garden display
+const clearGarden = () => {
+  const treeContainer = document.getElementById('treeContainer');
+  const bushContainer = document.getElementById('bushContainer');
+  const flowerContainer = document.getElementById('flowerContainer');
+  
+  if (treeContainer) treeContainer.innerHTML = '';
+  if (bushContainer) bushContainer.innerHTML = '';
+  if (flowerContainer) flowerContainer.innerHTML = '';
+};
 
-  let plotId = localStorage.getItem('plotId');
-  plotId = parseInt(plotId, 10);
-  console.log("fetching garden plot" + plotId);
+// Generate garden from saved plants when user returns
+const generateGarden = (savedPlants) => {
+  savedPlants.forEach((plant, index) => {
+    // Stagger each plant by 200ms for natural appearance
+    setTimeout(() => {
+      let plantVariety = plant.plant_id;
+      let locationX = plant.location_x;
+      let createdAt = plant.created_at;
+      
+      // Calculate growth based on time elapsed since planting
+      // Use realistic game progression (max 20 hours for trees, 10 for bushes)
+      let hoursElapsed = Math.floor(
+        (Date.now() - new Date(createdAt)) / 1000 / 60 / 60
+      );
+      
+      let timeGrowth;
+      // Progressive growth stages for better gameplay
+      if (hoursElapsed < 1) {
+        timeGrowth = 1; // Young plant
+      } else if (hoursElapsed < 8) {
+        timeGrowth = Math.min(hoursElapsed + 1, 8); // Growing stage
+      } else if (hoursElapsed < 24) {
+        timeGrowth = Math.min(8 + Math.floor((hoursElapsed - 8) / 2), 17); // Maturing stage  
+      } else if (hoursElapsed < 48) {
+        timeGrowth = Math.min(17 + Math.floor((hoursElapsed - 24) / 6), 19); // Nearly mature
+      } else {
+        // Fully mature after 48 hours
+        timeGrowth = (plantVariety >= 1 && plantVariety <= 3) ? 20 : 10; // Max growth (trees: 20, bushes: 10)
+      }
 
-  try {
-    const response = await fetch("/api/gardenplots/test", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (!response.ok) {
-      throw new Error('Fetch failed to get garden plot');
-    }
-
-    const gardenPlots = await response.json();
-    console.log(gardenPlots);
-    JSON.stringify(gardenPlots);
-    const matchingPlots = gardenPlots.filter((plot) => plot.plot_id === plotId);
-    console.log(matchingPlots);
-    if (matchingPlots) {
-      console.log(matchingPlots);
-      generateGarden(matchingPlots);
-    } else {
-      console.log('Plot not found');
-    }
-  } catch (error) {
-    console.error('Failed to fetch garden plot:', error);
-  }
-});
-
-// generate garden with choosePlot
-
-const generateGarden = (choosePlot) => {
-  // get each plant from choosePlot and add using a switch statement
-  choosePlot.forEach((plant) => {
-    let plantVariety = plant.plant_id;
-    let locationX = plant.location_x;
-    let createdAt = plant.createdAt;
-    // difference in hours
-    let timeGrowth = Math.floor(
-      (Date.now() - new Date(createdAt)) / 1000 / 60 / 60
-    );
-
-    console.log(plant);
-    console.log( plantVariety, locationX, timeGrowth);
-
-    switch (plantVariety) {
-      case 1:
-        addTree(locationX, timeGrowth, 1);
-        break;
-      case 2:
-        addTree(locationX, timeGrowth, 2);
-        break;
-      case 3:
-        addTree(locationX, timeGrowth, 3);
-        break;
-      case 4:
-        addBush(locationX, timeGrowth, 4);
-        break;
-      case 5:
-        addBush(locationX, timeGrowth, 5);
-        break;
-      case 6:
-        addBush(locationX, timeGrowth, 6);
-        break;
-      case 7:
-        addFlower(locationX, 7);
-        break;
-      case 8:
-        addFlower(locationX, 8);
-        break;
-      case 9:
-        addFlower(locationX, 9);
-        break;
-      default:
-    }
+      switch (plantVariety) {
+        case 1:
+        case 2:
+        case 3:
+          addTree(locationX, timeGrowth, plantVariety);
+          break;
+        case 4:
+        case 5:
+        case 6:
+          addBush(locationX, timeGrowth, plantVariety);
+          break;
+        case 7:
+        case 8:
+        case 9:
+          addFlower(locationX, plantVariety);
+          break;
+        default:
+          console.warn('Unknown plant variety:', plantVariety);
+      }
+    }, index * 200); // 200ms delay between each plant
   });
 };
 
-// Select a common ancestor element
-const gardenContainer = document.querySelector(".plantContainer");
+// Interactive fruit picking functionality
+// Attach click listeners to all plant containers for fruit harvesting
+const gardenView = document.getElementById('gardenView');
 
-// Add a click event listener to the common ancestor
-gardenContainer.addEventListener("click", function (event) {
+gardenView.addEventListener("click", function (event) {
   // Check if the clicked element has the class 'fruit'
   if (event.target.classList.contains("fruit")) {
-    // Hide the clicked fruit
+    // Hide the clicked fruit (harvest effect)
     event.target.style.display = "none";
   }
 });
-
-// const addTreeBtn = document.getElementById("addTree");
-
-// addTreeBtn.addEventListener("click", function() {
-//     const posX = Math.random() * treeContainer.clientWidth;
-//     addTree(posX, 1, 4, "apple");
-// });

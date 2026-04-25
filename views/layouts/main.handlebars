@@ -3,88 +3,84 @@
 <head>
   <meta charset='UTF-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  <title>Zen GArden</title>
-  {{!
-  <script defer src="navbar.js"></script> }}
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
- 
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <link rel='stylesheet' href='garden.css' />
+  <title>ZenGarden - Interactive Garden Planner</title>
   <link rel='stylesheet' href='/css/gardenPlot.css' />
   <link rel='stylesheet' href='/css/style.css' />
 </head>
 
 <body>
-  <header class='d-flex justify-content-between p-2'>
-    <img src='/images/Untitled design.png' alt='Logo' class='logo ' class='logo' />
-
+  <header>
+    <img src='/images/Untitled design.png' alt='Logo' class='logo' />
     <nav>
-      <!-- <div class="login">zen garden logo -->
-      <!-- <img src = "images/vecteezy_landscape-with-field-blue-sky-and-clouds-green-hill-park-or_29919103.svg" alt = "still-photo" class="still-logo"></div>   -->
       {{#if logged_in}}
-      <button class="btn btn-warning" id='logout' type="button">logout</button>
+      <button class="logout-btn" id='logout' type="button">logout</button>
       {{else}}
-      <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</button>
+      <button class="login-btn" type="button" onclick="showLoginModal()">Enter</button>
       {{/if}}
     </nav>
   </header>
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Login/Signup</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body row">
-          <form class="login col-md-5 mx-2">
-            <h2>Login</h2>
-
-            <div class="form-control">
-              <label for="usernameInputLogin"><i class="fa fa-envelope"></i>Username</label>
+  <!-- Login Modal -->
+  <div class="login-modal" id="loginModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Welcome to Your Garden</h1>
+        <button type="button" class="close-btn" onclick="hideLoginModal()" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+          <!-- Login Form -->
+          <form class="login-form">
+            <h2 class="form-title">Sign In</h2>
+            <div class="input-group">
+              <label for="usernameInputLogin">Username</label>
               <input type="text" id="usernameInputLogin" placeholder="Enter your username" required />
             </div>
-            <div class="form-control">
-              <label for="passwordInputLogin"><i class="fa fa-lock"></i>Password</label>
+            <div class="input-group">
+              <label for="passwordInputLogin">Password</label>
               <input type="password" id="passwordInputLogin" placeholder="Enter your password" required />
             </div>
-            <div class="form-control-others">
-              <button>LOGIN</button>
-            </div>
+            <button type="submit" class="primary-btn">Enter Garden</button>
           </form>
 
+          <div class="form-divider"></div>
 
-          <form class="registration  col-md-5 mx-2">
-            <h2>Registration</h2>
-            <div class="form-control">
-              <label for="usernameInput"><i class="fa fa-user"></i>Username</label>
-              <input type="text" id="usernameInput" placeholder="Enter your username" required />
+          <!-- Registration Form -->
+          <form class="registration-form">
+            <h2 class="form-title">Create Account</h2>
+            <div class="input-group">
+              <label for="usernameInput">Username</label>
+              <input type="text" id="usernameInput" placeholder="Choose a username" required />
             </div>
-            <div class="form-control">
-              <label for="passwordInput"><i class="fa fa-lock"></i>Password</label>
-              <input type="password" id="passwordInput" placeholder="Enter your password" required />
+            <div class="input-group">
+              <label for="passwordInput">Password</label>
+              <input type="password" id="passwordInput" placeholder="Create a password" required />
             </div>
-            <div class="form-control-others">
-              <button>CREATE ACCOUNT</button>
-            </div>
+            <button type="submit" class="secondary-btn">Plant Your First Seed</button>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <small class="modal-note">Take your time. Gardens are meant to be enjoyed.</small>
         </div>
       </div>
     </div>
   </div>
-  {{{body}}}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+  <main>
+    {{{body}}}
+  </main>
+
+  <script>
+    function showLoginModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+    function hideLoginModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+    // Close modal when clicking outside
+    document.getElementById('loginModal').onclick = function(e) {
+      if (e.target === this) hideLoginModal();
+    }
+  </script>
 
 {{#if logged_in}}
 <script src="/logout.js"></script>

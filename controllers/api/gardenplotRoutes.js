@@ -1,10 +1,13 @@
+/**
+ * Garden Plot API Routes
+ * Handles CRUD operations for garden plots and plant associations
+ */
+
 const router = require('express').Router();
 const { Gardenplot, plotPlant, Plant } = require('../../models');
-// const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // pull all available plots and plants 
     const gardenPlots = await Gardenplot.findAll( {
       include: [{
         model: Plant, 
@@ -17,7 +20,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// set post to pass in the user info & create the garden plot for the correct user
 router.post('/', async (req, res) => {
   try {
     const newPlot = await Gardenplot.create({
@@ -32,11 +34,38 @@ router.post('/', async (req, res) => {
 
 // updating or adding a new plant to gardenplot
 
-router.get('/test', async (req, res) => {
-  try { 
-    const plotPlants = await plotPlant.findAll();
+// Get plants for a specific plot
+router.get('/:id/plants', async (req, res) => {
+  try {
+    const plotId = parseInt(req.params.id, 10);
     
-    res.status(200).json(plotPlants);
+    // Query the junction table directly to get all individual plant instances
+    const plotPlants = await plotPlant.findAll({
+      where: { plot_id: plotId },
+      attributes: ['id', 'plot_id', 'plant_id', 'location_x', 'created_at'],
+      raw: true
+    });
+    
+    if (plotPlants.length === 0) {
+      return res.status(200).json([]);
+    }
+    
+    // Get plant details for each instance
+    const plantsData = [];
+    for (const plotPlant of plotPlants) {
+      const plant = await Plant.findByPk(plotPlant.plant_id);
+      if (plant) {
+        plantsData.push({
+          plant_id: plant.id,
+          location_x: plotPlant.location_x,
+          created_at: plotPlant.created_at,
+          plant_type: plant.plant_type,
+          plant_variety: plant.plant_variety
+        });
+      }
+    }
+    
+    res.status(200).json(plantsData);
   } catch (err) {
     console.error('Error fetching plot plants:', err);
     res.status(500).json({ error: 'Internal Server Error', details: err.message });
@@ -44,7 +73,6 @@ router.get('/test', async (req, res) => {
 });
 
 router.post('/:id', async (req, res) => {
-  console.log('req.body:', req.body);
 
   try {
     const newPlant = await plotPlant.create({
@@ -85,11 +113,9 @@ router.delete('/:id', async (req, res) => {
 router.get('/singlePlot', async (req, res) => {
   let plotId = req.query.plotId;
   plotId = parseInt(plotId, 10);
-  console.log('Received Plot ID:', plotId);
   const plotData = [{
     "plotId": plotId
   }];
-  console.log('Plot Data:', plotData);
   //store the plotId to local storage 
   
 

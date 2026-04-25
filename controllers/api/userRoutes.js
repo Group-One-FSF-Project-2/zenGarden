@@ -1,7 +1,12 @@
+/**
+ * User API Routes
+ * Handles user authentication and account management
+ */
+
 const router = require('express').Router();
 const { User, Gardenplot, plotPlant } = require('../../models');
 
-//POST create new user
+// Create new user
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -17,7 +22,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-//POST Login
+// User login
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { user_name: req.body.user_name }});
@@ -41,14 +46,13 @@ router.post('/login', async (req, res) => {
     req.session.save( async () => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      console.log('User ID:', userData.id);
-      
+
       try {
         const gardenPlot = await Gardenplot.findOne({ where: { user_id: userData.id } });
         if (gardenPlot) {
           res.json({ user: userData.id, plotData: gardenPlot.id });
         } else {
-          // 
+          // Create new garden plot for user
           const createPlot = await Gardenplot.create({
             user_id: userData.id,
             plot_name: `${userData.user_name} Garden Plot`
@@ -61,9 +65,6 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
       }
 
-      // res.json({ user: userData.id, message: 'You are now logged in!' });
-
-
     });
 
   } catch (err) {
@@ -72,7 +73,7 @@ router.post('/login', async (req, res) => {
 });
 
 
-//POST logout
+// User logout
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

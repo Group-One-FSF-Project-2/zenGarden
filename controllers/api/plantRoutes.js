@@ -1,3 +1,8 @@
+/**
+ * Plant API Routes
+ * Handles CRUD operations for plant data and associations
+ */
+
 const router = require('express').Router();
 const { Plant, plotPlant } = require('../../models');
 
